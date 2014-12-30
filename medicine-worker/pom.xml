@@ -16,6 +16,11 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
+    <dependency> 
+      <groupId>org.apache.hbase</groupId>
+      <artifactId>hbase-client</artifactId> 
+      <version>0.98.0-hadoop2</version> 
+    </dependency> 
   	<dependency>
 		<groupId>net.sf.json-lib</groupId>
 		<artifactId>json-lib</artifactId>

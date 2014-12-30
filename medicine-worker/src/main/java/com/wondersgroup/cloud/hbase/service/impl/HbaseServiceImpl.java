@@ -152,7 +152,7 @@ public class HbaseServiceImpl implements HbaseService{
 		RootData rootData = (RootData) JSONObject.toBean(jsonObject, RootData.class);
 		
 		// while((str = br.readLine()) != null) {
-		for (int i = 1; i <= 200000; i++) {
+		for (int i = 1; i <= 200001; i++) {
 			Put put = new Put(("key_" + i).getBytes());// 一个PUT代表一行数据，再NEW一个PUT表示第二行数据,每行一个唯一的ROWKEY，此处rowkey为put构造方法中传入的值
 			put.add("hospitalName".getBytes(), null, (rootData.getOrgan().getPath().split("/")[0]).getBytes());// 本行数据的第一列
 			put.add("DepartmentName".getBytes(), null, (rootData.getOrgan().getPath().split("/")[1]).getBytes());// 本行数据的第三列
@@ -164,7 +164,7 @@ public class HbaseServiceImpl implements HbaseService{
 
 			puts.add(put);
 			// System.out.println(str);
-			 if(i%100000 == 0){
+			 if(i%100000 == 0 ){
 				 table.put(puts);
 				 puts.clear();
 			 }
