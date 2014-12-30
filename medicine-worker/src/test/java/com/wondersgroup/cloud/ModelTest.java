@@ -1,6 +1,6 @@
-package com.wondersgroup.cloud.medicine.model;
+package com.wondersgroup.cloud;
 
-import com.wondersgroup.cloud.medicine.model.RootData;
+import com.wondersgroup.cloud.hbase.model.RootData;
 
 import net.sf.json.JSONObject;
 import junit.framework.TestCase;
