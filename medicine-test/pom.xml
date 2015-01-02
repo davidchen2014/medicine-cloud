@@ -6,17 +6,48 @@
 	<parent>
 		<groupId>com.wondersgroup</groupId>
 		<artifactId>medicine-parent</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>1.0</version>
 	</parent>
 	<groupId>com.wondersgroup</groupId>
 	<artifactId>medicine-test</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>medicine-test</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
+		<dependency>
+            <groupId>com.wondersgroup</groupId>
+            <artifactId>medicine-module</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+		<dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-actor_${akka.module.version}</artifactId>
+            <version>${akka_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-remote_${akka.module.version}</artifactId>
+            <version>${akka_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>${google_protobuf_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-slf4j_${akka.module.version}</artifactId>
+            <version>${akka_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-cluster_${akka.module.version}</artifactId>
+            <version>${akka_version}</version>
+        </dependency>
+	
 		<dependency>
 			<groupId>net.sf.json-lib</groupId>
 			<artifactId>json-lib</artifactId>

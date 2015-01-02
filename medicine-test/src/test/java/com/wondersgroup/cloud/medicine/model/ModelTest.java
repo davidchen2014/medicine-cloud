@@ -7,7 +7,9 @@ public class ModelTest extends TestCase {
 	public void testModel() {
 		long version = System.currentTimeMillis();
 		RootData line1 = new RootData();
-		line1 = line1.initOrgan("sh/xinhua/waike/nima1").initTime(version).initQueue("catA,ratA,ratB");
+		line1 = line1.initOrgan("sh/xinhua/waike/nima1").initTime(String.valueOf(version)).initQueue("catA,ratA,ratB");
+		
+		
 		JSONObject encode = JSONObject.fromObject(line1);
 		System.out.println(encode.toString());
 
