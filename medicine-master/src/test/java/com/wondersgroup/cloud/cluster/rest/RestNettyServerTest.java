@@ -1,14 +1,25 @@
 package com.wondersgroup.cloud.cluster.rest;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
+import junit.framework.TestCase;
 import net.sf.json.JSONArray;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.protocol.HTTP;
 
-import junit.framework.TestCase;
+import com.wondersgroup.cloud.medicine.model.RootData;
 
 public class RestNettyServerTest extends TestCase {
 
@@ -18,9 +29,7 @@ public class RestNettyServerTest extends TestCase {
 
 	@Override
 	protected void setUp() throws Exception {
-		server = new NettyServer();
-		server.start(8080);
-		logger.info("server start at 8080");
+
 	}
 
 	@Override
@@ -30,11 +39,51 @@ public class RestNettyServerTest extends TestCase {
 	}
 
 	public void testDeployInstance() {
+		server = new NettyServer();
+		server.start(8080);
+		logger.info("server start at 8080");
+
 		Demo2Service service = new Demo2ServiceImpl();
 		server.deploy(Demo2ServiceImpl.class, service, "");
 		logger.info("server deploy service successful");
+		// server.undeploy(Demo2ServiceImpl.class);
+
+		while (true) {
+
+		}
+
 		// call like this pattern: http://localhost:8080/sample/demo2/dabian
-		server.undeploy(Demo2ServiceImpl.class);
+	}
+
+	public void testCallRest() throws ClientProtocolException, IOException {
+		String url = "http://127.0.0.1:8080/sample/demo2";
+		// POST的URL
+		HttpPost httppost = new HttpPost(url);
+		// 建立HttpPost对象
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		// 建立一个NameValuePair数组，用于存储欲传送的参数
+		RootData[] datas = prepareData();
+		params.add(new BasicNameValuePair("size", String.valueOf(datas.length)));
+		params.add(new BasicNameValuePair("content", JSONArray.fromObject(datas).toString()));
+		// 添加参数
+		httppost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+		// 设置编码
+		HttpResponse response = new DefaultHttpClient().execute(httppost);
+		assertTrue(response.getStatusLine().getStatusCode() == Constants.SUCCESS);
+	}
+
+	private static RootData[] prepareData() {
+		List<RootData> result = new ArrayList<RootData>(2 << 5);
+		for (int i = 0; i < 10; i++) {
+			RootData line1 = new RootData();
+			long version = System.currentTimeMillis();
+			line1 = line1.initOrgan("sh/xinhua/waike/nima1").initTime(String.valueOf(version))
+					.initQueue("catA,ratA,ratB");
+			// JSONObject encode = JSONObject.fromObject(line1);
+			// System.out.println(encode.toString());
+			result.add(line1);
+		}
+		return result.toArray(new RootData[result.size()]);
 	}
 
 	public void testArray() {
@@ -45,7 +94,8 @@ public class RestNettyServerTest extends TestCase {
 		int total = arrays.length;
 
 		while (start <= total) {
-			if (end > total) end = total;
+			if (end > total)
+				end = total;
 			int[] parts = Arrays.copyOfRange(arrays, start, end);
 			logger.info("parts::" + JSONArray.fromObject(parts).toString());
 			start = end + 1;
