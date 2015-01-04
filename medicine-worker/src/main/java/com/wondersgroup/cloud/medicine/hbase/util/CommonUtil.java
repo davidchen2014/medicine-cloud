@@ -1,4 +1,4 @@
-package com.wondersgroup.cloud.hbase.util;
+package com.wondersgroup.cloud.medicine.hbase.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;

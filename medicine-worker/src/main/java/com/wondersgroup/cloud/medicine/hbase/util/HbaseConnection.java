@@ -1,4 +1,4 @@
-package com.wondersgroup.cloud.hbase.util;
+package com.wondersgroup.cloud.medicine.hbase.util;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;

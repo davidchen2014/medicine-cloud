@@ -27,8 +27,8 @@ public class JobAcceptor extends UntypedActor {
 	private RestServer server;
 
 	private int totalInstances = 100;
-	private int maxInstancesPerNode = 3;
-	private boolean allowLocalRoutees = false;// 本地测试可以用true
+	private int maxInstancesPerNode = 1;
+	private boolean allowLocalRoutees = true;// 本地测试可以用true
 	private String useRole = "worker";
 	private LoggingAdapter logger = Logging.getLogger(super.getContext().system(), this);
 
@@ -54,17 +54,17 @@ public class JobAcceptor extends UntypedActor {
 			logger.info("root_path:::" + workerRouter.path().toString());
 
 			RootData[] datas = content.getData();
-			int length = 4;
+			int length = 20000;
 			int start = 0;
 			int end = start + length;
 			int total = datas.length;
 
-			while (start <= total) {
+			while (start < total) {
 				if (end > total)
 					end = total;
 				RootData[] parts = Arrays.copyOfRange(datas, start, end);
 				workerRouter.tell(new JobRequest(parts[0].getTime().getValue(), parts), super.getSelf());
-				start = end + 1;
+				start = end;
 				end = start + length;
 			}
 

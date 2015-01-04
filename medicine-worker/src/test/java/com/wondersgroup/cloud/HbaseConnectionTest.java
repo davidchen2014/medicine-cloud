@@ -3,7 +3,7 @@ package com.wondersgroup.cloud;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 
-import com.wondersgroup.cloud.hbase.util.HbaseConnection;
+import com.wondersgroup.cloud.medicine.hbase.util.HbaseConnection;
 
 public class HbaseConnectionTest {
 

@@ -22,6 +22,11 @@
             <artifactId>medicine-module</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.wondersgroup</groupId>
+            <artifactId>medicine-worker</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
 		<dependency>
             <groupId>com.typesafe.akka</groupId>
             <artifactId>akka-actor_2.10</artifactId>

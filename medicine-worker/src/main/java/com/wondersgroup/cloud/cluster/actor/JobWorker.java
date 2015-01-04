@@ -4,14 +4,24 @@ import akka.actor.UntypedActor;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
 
+import com.wondersgroup.cloud.medicine.hbase.service.HbaseService;
+import com.wondersgroup.cloud.medicine.hbase.service.impl.HbaseServiceImpl;
+import com.wondersgroup.cloud.medicine.model.JobRequest;
+
 public class JobWorker extends UntypedActor {
 
 	private LoggingAdapter logger = Logging.getLogger(super.getContext().system(), this);
 
 	@Override
 	public void onReceive(Object message) throws Exception {
-		System.out.println("remote nimanimanimanimanimanimanima");
-		logger.info("remote worker receiveMessage:---" + message);
+		logger.info("local worker receiveMessage:---" + message);
+		if (message instanceof JobRequest) {
+			// todo通过spring extension注入获得service
+			JobRequest request = (JobRequest) message;
+			HbaseService hbaseService = new HbaseServiceImpl();
+			hbaseService.insertData("test", request.getData());
+			logger.info("local worker receiveMessage:---" + request.getId()+"  "+request.getData().length);
+		}
 	}
 
 }

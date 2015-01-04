@@ -4,9 +4,9 @@ import java.io.IOException;
 
 import junit.framework.TestCase;
 
-import com.wondersgroup.cloud.hbase.service.HbaseService;
-import com.wondersgroup.cloud.hbase.service.impl.HbaseServiceImpl;
-import com.wondersgroup.cloud.hbase.util.CommonUtil;
+import com.wondersgroup.cloud.medicine.hbase.service.HbaseService;
+import com.wondersgroup.cloud.medicine.hbase.service.impl.HbaseServiceImpl;
+import com.wondersgroup.cloud.medicine.hbase.util.CommonUtil;
 
 public class HbaseServiceTest extends TestCase{
 	HbaseService hbaseService = new HbaseServiceImpl();

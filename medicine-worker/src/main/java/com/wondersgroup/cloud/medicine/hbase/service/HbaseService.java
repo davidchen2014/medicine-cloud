@@ -1,6 +1,8 @@
-package com.wondersgroup.cloud.hbase.service;
+package com.wondersgroup.cloud.medicine.hbase.service;
 
 import java.io.IOException;
+
+import com.wondersgroup.cloud.medicine.model.RootData;
 
 public interface HbaseService {
 	
@@ -18,6 +20,14 @@ public interface HbaseService {
 	 * @throws IOException
 	 */
 	public void insertData(String tableName) throws IOException;
+	
+	/**
+	 * 插入数据
+	 * 
+	 * @param tableName
+	 * @throws IOException
+	 */
+	public void insertData(String tableName,RootData[] rootData) throws IOException;
 	
 	/**
 	 * 删除一张表

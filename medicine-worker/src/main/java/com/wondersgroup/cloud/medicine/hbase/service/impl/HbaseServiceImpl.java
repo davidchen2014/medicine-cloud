@@ -1,4 +1,4 @@
-package com.wondersgroup.cloud.hbase.service.impl;
+package com.wondersgroup.cloud.medicine.hbase.service.impl;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -35,8 +35,8 @@ import org.apache.hadoop.hbase.filter.FilterList;
 import org.apache.hadoop.hbase.filter.SingleColumnValueFilter;
 import org.apache.hadoop.hbase.util.Bytes;
 
-import com.wondersgroup.cloud.hbase.model.RootData;
-import com.wondersgroup.cloud.hbase.service.HbaseService;
+import com.wondersgroup.cloud.medicine.hbase.service.HbaseService;
+import com.wondersgroup.cloud.medicine.model.RootData;
 
 public class HbaseServiceImpl implements HbaseService{
 
@@ -146,7 +146,7 @@ public class HbaseServiceImpl implements HbaseService{
 		List puts = new ArrayList();
 		
 		RootData line1 = new RootData();
-		line1 = line1.initOrgan("瑞金医院/内科/消化科/202").initTime(start).initQueue("catA,ratA,ratB");
+		line1 = line1.initOrgan("瑞金医院/内科/消化科/202").initTime(startTime).initQueue("catA,ratA,ratB");
 		JSONObject jsonObject = JSONObject.fromObject(line1);
 
 		RootData rootData = (RootData) JSONObject.toBean(jsonObject, RootData.class);
@@ -195,6 +195,45 @@ public class HbaseServiceImpl implements HbaseService{
 		System.out.println("Total time : " + total_time + " ms");
 	}
 
+	/**
+	 * 插入数据
+	 * 
+	 * @param tableName
+	 * @throws IOException
+	 */
+	public void insertData(String tableName,RootData[] rootData) throws IOException{
+
+		long start = System.currentTimeMillis();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date = new Date(start);
+		HTablePool pool = new HTablePool(hbaseConfig, 1000);
+		HTableInterface table = pool.getTable(tableName);
+		System.out.println(formatter.format(date) + " start insert data ......");
+
+		String startTime = formatter.format(date);
+		List puts = new ArrayList();
+		
+		for (int i = 0; i < rootData.length; i++) {
+			Put put = new Put(rootData[i].getId().getBytes());// 一个PUT代表一行数据，再NEW一个PUT表示第二行数据,每行一个唯一的ROWKEY，此处rowkey为put构造方法中传入的值
+			put.add("hospitalName".getBytes(), null, (rootData[i].getOrgan().getPath().split("/")[0]).getBytes());// 本行数据的第一列
+			put.add("DepartmentName".getBytes(), null, (rootData[i].getOrgan().getPath().split("/")[1]).getBytes());// 本行数据的第三列
+			put.add("DepartmentChildName".getBytes(), null, (rootData[i].getOrgan().getPath().split("/")[2]).getBytes());// 本行数据的第三列
+			put.add("doorNo".getBytes(), null, (rootData[i].getOrgan().getPath().split("/")[3]).getBytes());// 本行数据的第三列
+			put.add("time".getBytes(), null, startTime.getBytes());// 本行数据的第三列
+			put.add("snapshot".getBytes(), null, rootData[i].getQueue().getValue().getBytes());// 本行数据的第三列
+			// table.put(put);
+			puts.add(put);
+		}
+		
+		table.put(puts);
+		long end = System.currentTimeMillis();
+		long total_time = end - start;
+		Date date1 = new Date(end);
+		System.out.println(formatter.format(date1) + " end insert data ......");
+		System.out.println("Total time : " + total_time + " ms");
+	
+	}
+	
 	/**
 	 * 删除一张表
 	 * 

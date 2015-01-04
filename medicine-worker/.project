@@ -1,17 +1,15 @@
 <projectDescription>
   <name>medicine-worker</name>
   <comment>The parent project of data</comment>
-  <projects/>
+  <projects>
+    <project>medicine-module</project>
+  </projects>
   <buildSpec>
-    <buildCommand>
-      <name>org.eclipse.m2e.core.maven2Builder</name>
-    </buildCommand>
     <buildCommand>
       <name>org.eclipse.jdt.core.javabuilder</name>
     </buildCommand>
   </buildSpec>
   <natures>
-    <nature>org.eclipse.m2e.core.maven2Nature</nature>
     <nature>org.eclipse.jdt.core.javanature</nature>
   </natures>
 </projectDescription>
