@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.apache.hadoop.conf.Configuration;
@@ -222,6 +223,7 @@ public class HbaseServiceImpl implements HbaseService{
 			put.add("doorNo".getBytes(), null, (rootData[i].getOrgan().getPath().split("/")[3]).getBytes());// 本行数据的第三列
 			put.add("time".getBytes(), null, startTime.getBytes());// 本行数据的第三列
 			put.add("snapshot".getBytes(), null, rootData[i].getQueue().getValue().getBytes());// 本行数据的第三列
+			put.add("totalInfo".getBytes(), null, (JSONObject.fromObject(rootData[i]).toString()).getBytes());// 本行数据的第三列
 			// table.put(put);
 			puts.add(put);
 		}
@@ -283,10 +285,10 @@ public class HbaseServiceImpl implements HbaseService{
 	 * @param tableName
 	 * @throws IOException
 	 */
-	public void QueryAll(String tableName) throws IOException {
+	public void QueryAll() throws IOException {
 		HConnection connection = HConnectionManager
 				.createConnection(hbaseConfig);
-		HTableInterface table = connection.getTable(tableName);
+		HTableInterface table = connection.getTable("test");
 		try {
 			ResultScanner rs = table.getScanner(new Scan());
 			for (Result r : rs) {
@@ -307,19 +309,27 @@ public class HbaseServiceImpl implements HbaseService{
 	 * @param tableName
 	 * @throws IOException
 	 */
-	public void QueryByCondition1(String tableName,String rowkey) throws IOException {
+	public String QueryByCondition1(String tableName,String rowkey) throws IOException {
 
 		HConnection connection = HConnectionManager
 				.createConnection(hbaseConfig);
-		HTableInterface table = connection.getTable(tableName);
+		HTableInterface table = connection.getTable("medicine");
 		Get scan = new Get(rowkey.getBytes());// 根据rowkey查询
 		Result r = table.get(scan);
-		System.out.println("获得到rowkey:" + new String(r.getRow()));
+//		RootData rootData = new RootData();
+//		System.out.println("获得到rowkey:" + new String(r.getRow()));
+		String rowInfo = "";
 		for (KeyValue keyValue : r.raw()) {
-			System.out.println("列：" + new String(keyValue.getFamily())
-					+ "====值:" + new String(keyValue.getValue()));
+//			System.out.println("列：" + new String(keyValue.getFamily())
+//					+ "====值:" + new String(keyValue.getValue()));
+			if((new String(keyValue.getFamily())).equals("totalInfo")){
+				rowInfo = new String(keyValue.getValue());
+			}
+			
 		}
+//		System.out.println(rowInfo);
 		System.out.println("query data end");
+		return rowInfo;
 	}
 
 	/**

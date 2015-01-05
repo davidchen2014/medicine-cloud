@@ -2,6 +2,8 @@ package com.wondersgroup.cloud.medicine.hbase.service;
 
 import java.io.IOException;
 
+import net.sf.json.JSONArray;
+
 import com.wondersgroup.cloud.medicine.model.RootData;
 
 public interface HbaseService {
@@ -50,7 +52,7 @@ public interface HbaseService {
 	 * @param tableName
 	 * @throws IOException
 	 */
-	public void QueryAll(String tableName) throws IOException;
+	public void QueryAll() throws IOException;
 	
 	/**
 	 * 单条件查询,根据rowkey查询唯一一条记录
@@ -58,7 +60,7 @@ public interface HbaseService {
 	 * @param tableName
 	 * @throws IOException
 	 */
-	public void QueryByCondition1(String tableName,String rowkey) throws IOException;
+	public String QueryByCondition1(String tableName,String rowkey) throws IOException;
 	
 	/**
 	 * 单条件按查询，查询多条记录

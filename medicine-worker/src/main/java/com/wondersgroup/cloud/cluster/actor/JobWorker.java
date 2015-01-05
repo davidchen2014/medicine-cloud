@@ -19,7 +19,7 @@ public class JobWorker extends UntypedActor {
 			// todo通过spring extension注入获得service
 			JobRequest request = (JobRequest) message;
 			HbaseService hbaseService = new HbaseServiceImpl();
-			hbaseService.insertData("test", request.getData());
+			hbaseService.insertData("medicine", request.getData());
 			logger.info("local worker receiveMessage:---" + request.getId()+"  "+request.getData().length);
 		}
 	}

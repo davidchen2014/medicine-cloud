@@ -2,14 +2,6 @@ package com.wondersgroup.cloud;
 
 import java.io.IOException;
 
-import org.apache.hadoop.hbase.KeyValue;
-import org.apache.hadoop.hbase.client.HConnection;
-import org.apache.hadoop.hbase.client.HConnectionManager;
-import org.apache.hadoop.hbase.client.HTableInterface;
-import org.apache.hadoop.hbase.client.Result;
-import org.apache.hadoop.hbase.client.ResultScanner;
-import org.apache.hadoop.hbase.client.Scan;
-
 import junit.framework.TestCase;
 
 import com.wondersgroup.cloud.medicine.hbase.service.HbaseService;
@@ -20,8 +12,8 @@ public class HbaseServiceTest extends TestCase{
 	HbaseService hbaseService = new HbaseServiceImpl();
 
 	public void createTableTest() {
-		String[] cloumnStr = {"hospitalName","DepartmentName","DepartmentChildName","doorNo","time","snapshot"};
-		hbaseService.createTable("test",cloumnStr);
+		String[] cloumnStr = {"hospitalName","DepartmentName","DepartmentChildName","doorNo","time","snapshot","totalInfo"};
+		hbaseService.createTable("medicine",cloumnStr);
 	}
 	
 	public void insertDataTest() {
@@ -44,7 +36,7 @@ public class HbaseServiceTest extends TestCase{
 	 * @throws IOException
 	 */
 	public void QueryAllTest() throws IOException {
-		hbaseService.QueryAll("test");
+		hbaseService.QueryAll();
 	}
 	
 	/**
@@ -54,7 +46,8 @@ public class HbaseServiceTest extends TestCase{
 	 * @throws IOException
 	 */
 	public void QueryByCondition1Test() throws IOException{
-		hbaseService.QueryByCondition1("test","key_2");
+		String rowkey = hbaseService.QueryByCondition1("test","key_2");
+		System.out.println(rowkey);
 	}
 	
 	/**
@@ -80,6 +73,6 @@ public class HbaseServiceTest extends TestCase{
 	}
 	
 	public void dropTableTest() {
-		hbaseService.dropTable("test");
+		hbaseService.dropTable("medicine");
 	}
 }

@@ -7,6 +7,10 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
+import net.sf.json.JSONObject;
+
+import com.wondersgroup.cloud.medicine.model.RootData;
+
 @Path("medicine/service")
 public interface MedicineService {
 
@@ -18,15 +22,17 @@ public interface MedicineService {
 	@POST
 	public int inputdata(@FormParam("size") int size, @FormParam("content")String content);
 
-	@GET
-	public int inputdata();
+//	@POST
+//	@Path("createTable")
+//	public int createTable(@PathParam("tableName") String tableName, @PathParam("columnStr") String columnStr);
+	
+//	@GET
+//	//@Path("queryAll")
+//	public int queryAll();
 	
 	@GET
-	public void createTable(@PathParam("tableName") String tableName, @PathParam("columnListArr") String[] columnListArr);
+	public JSONObject QueryByCondition1(@PathParam("rowkey") String rowkey);
 	
-//	@PUT
-//	public int query(@FormParam("tableName") String tableName);
-//	
-//	@PUT
+//	@GET
 //	public int query(@FormParam("tableName") String tableName, @FormParam("rowkey") String rowkey);
 }
