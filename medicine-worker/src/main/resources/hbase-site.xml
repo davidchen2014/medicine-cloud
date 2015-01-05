@@ -7,6 +7,11 @@
     </property>
     
     <property>
+      <name>hadoop.home.dir</name>
+      <value>xxxxxxxxxxxxx</value>
+    </property>
+    
+    <property>
       <name>hbase.hstore.flush.retries.number</name>
       <value>120</value>
     </property>

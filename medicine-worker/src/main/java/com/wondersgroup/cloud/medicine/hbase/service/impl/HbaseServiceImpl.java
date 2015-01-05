@@ -46,7 +46,8 @@ public class HbaseServiceImpl implements HbaseService{
 		// configuration = HBaseConfiguration.create();
 		// Configuration config = new Configuration();
 		// config.addResource("hbase-site.xml");
-		// // configuration.set("hbase.master", "10.1.64.69:600000");
+		// configuration.set("hbase.master", "10.1.64.69:600000");
+		
 		// config.set("hbase.zookeeper.quorum", "bd-08,bd-09,bd-10");
 		// config.set("hbase.zookeeper.property.clientPort", "2181");
 		hbaseConfig = HBaseConfiguration.create();
@@ -306,12 +307,12 @@ public class HbaseServiceImpl implements HbaseService{
 	 * @param tableName
 	 * @throws IOException
 	 */
-	public void QueryByCondition1(String tableName) throws IOException {
+	public void QueryByCondition1(String tableName,String rowkey) throws IOException {
 
 		HConnection connection = HConnectionManager
 				.createConnection(hbaseConfig);
 		HTableInterface table = connection.getTable(tableName);
-		Get scan = new Get("key1".getBytes());// 根据rowkey查询
+		Get scan = new Get(rowkey.getBytes());// 根据rowkey查询
 		Result r = table.get(scan);
 		System.out.println("获得到rowkey:" + new String(r.getRow()));
 		for (KeyValue keyValue : r.raw()) {
@@ -327,13 +328,13 @@ public class HbaseServiceImpl implements HbaseService{
 	 * @param tableName
 	 * @throws IOException
 	 */
-	public void QueryByCondition2(String tableName) throws IOException {
+	public void QueryByCondition2(String tableName,String columnName,String columnValue) throws IOException {
 
 		HConnection connection = HConnectionManager
 				.createConnection(hbaseConfig);
 		HTableInterface table = connection.getTable(tableName);
-		Filter filter = new SingleColumnValueFilter(Bytes.toBytes("column1"),
-				null, CompareOp.EQUAL, Bytes.toBytes("aaaaa")); // 当列column1的值为aaa时进行查询
+		Filter filter = new SingleColumnValueFilter(Bytes.toBytes("DepartmentChildName"),
+				null, CompareOp.EQUAL, Bytes.toBytes("waike")); // 当列column1的值为aaa时进行查询
 		Scan s = new Scan();
 		s.setFilter(filter);
 		ResultScanner rs = table.getScanner(s);
@@ -354,7 +355,7 @@ public class HbaseServiceImpl implements HbaseService{
 	 * @param tableName
 	 * @throws IOException
 	 */
-	public void QueryByCondition3(String tableName) throws IOException {
+	public void QueryByCondition3(String tableName,String[] columnNameArr,String[] cloumnValueArr) throws IOException {
 
 		HConnection connection = HConnectionManager
 				.createConnection(hbaseConfig);
@@ -362,22 +363,17 @@ public class HbaseServiceImpl implements HbaseService{
 
 		List<Filter> filters = new ArrayList<Filter>();
 
-		Filter filter1 = new SingleColumnValueFilter(Bytes.toBytes("column1"),
-				null, CompareOp.EQUAL, Bytes.toBytes("aaa"));
-		filters.add(filter1);
+		for(int i=0; i<columnNameArr.length; i++){
+			Filter filter = new SingleColumnValueFilter(Bytes.toBytes(columnNameArr[i]),
+					null, CompareOp.EQUAL, Bytes.toBytes(cloumnValueArr[i]));
+			filters.add(filter);
+			
+		}
 
-		Filter filter2 = new SingleColumnValueFilter(Bytes.toBytes("column2"),
-				null, CompareOp.EQUAL, Bytes.toBytes("bbb"));
-		filters.add(filter2);
-
-		Filter filter3 = new SingleColumnValueFilter(Bytes.toBytes("column3"),
-				null, CompareOp.EQUAL, Bytes.toBytes("ccc"));
-		filters.add(filter3);
-
-		FilterList filterList1 = new FilterList(filters);
+		FilterList filterList = new FilterList(filters);
 
 		Scan scan = new Scan();
-		scan.setFilter(filterList1);
+		scan.setFilter(filterList);
 		ResultScanner rs = table.getScanner(scan);
 		for (Result r : rs) {
 			System.out.println("获得到rowkey:" + new String(r.getRow()));

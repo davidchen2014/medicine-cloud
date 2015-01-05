@@ -58,7 +58,7 @@ public interface HbaseService {
 	 * @param tableName
 	 * @throws IOException
 	 */
-	public void QueryByCondition1(String tableName) throws IOException;
+	public void QueryByCondition1(String tableName,String rowkey) throws IOException;
 	
 	/**
 	 * 单条件按查询，查询多条记录
@@ -66,7 +66,7 @@ public interface HbaseService {
 	 * @param tableName
 	 * @throws IOException
 	 */
-	public void QueryByCondition2(String tableName) throws IOException;
+	public void QueryByCondition2(String tableName,String columnName,String columnValue) throws IOException;
 	
 	/**
 	 * 组合条件查询
@@ -74,5 +74,5 @@ public interface HbaseService {
 	 * @param tableName
 	 * @throws IOException
 	 */
-	public void QueryByCondition3(String tableName) throws IOException;
+	public void QueryByCondition3(String tableName,String[] columnNameArr,String[] cloumnValueArr) throws IOException;
 }

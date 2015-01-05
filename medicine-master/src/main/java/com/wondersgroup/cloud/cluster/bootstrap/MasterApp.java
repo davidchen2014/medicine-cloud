@@ -53,7 +53,7 @@ public class MasterApp {
 					// 8080), 1000, null, null, null);
 					// 这里启动rest
 					// 测试数据时候可以解开标签
-					acceptor.tell(new JobRequest(demoData[0].getTime().getValue(), demoData), acceptor);
+//					acceptor.tell(new JobRequest(demoData[0].getTime().getValue(), demoData), acceptor);
 					
 					system.actorOf(Props.create(ClusterDomainEventListener.class), "cluster-listener");
 				}
