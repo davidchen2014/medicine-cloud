@@ -17,7 +17,7 @@ public class BootStrap {
 		final String port = args.length > 0 ? args[1] : "0";
 
 		final Config config = ConfigFactory.parseString("akka.remote.netty.tcp.port=" + port)
-				.withFallback(ConfigFactory.parseString("akka.cluster.roles = [master]"))
+				.withFallback(ConfigFactory.parseString("akka.cluster.roles = [seed]"))
 				.withFallback(ConfigFactory.parseString("akka.remote.netty.tcp.hostname=" + ip))
 				.withFallback(ConfigFactory.load("seed"));
 

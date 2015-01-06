@@ -41,9 +41,11 @@ public class MasterApp {
 		// final JSONArray json = JSONArray.fromObject(demoData);
 
 		if (system.settings().config().getStringList("akka.cluster.roles").contains("master")) {
+			logger.info("是master节点！");
 			Cluster.get(system).registerOnMemberUp(new Runnable() {
 				@Override
 				public void run() {
+					logger.info("创建acceptor-actor");
 					ActorRef acceptor = system.actorOf(Props.create(JobAcceptor.class), "acceptor");
 					logger.info("master node is ready!");
 					// 暂时放弃spray-io 使用resteasy来做监听
