@@ -70,7 +70,6 @@ public class RestNettyServerTest extends TestCase {
 		// 设置编码
 		HttpResponse response = new DefaultHttpClient().execute(httppost);
 		assertTrue(response.getStatusLine().getStatusCode() == 204);
-		
 	}
 
 	private static RootData[] prepareData() {
