@@ -42,6 +42,7 @@ import com.wondersgroup.cloud.medicine.model.RootData;
 public class HbaseServiceImpl implements HbaseService{
 
 	private static Configuration hbaseConfig = null;
+	
 	// public static HBaseAdmin hBaseAdmin = null;
 	static {
 		// configuration = HBaseConfiguration.create();

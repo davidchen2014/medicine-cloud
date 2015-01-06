@@ -22,17 +22,11 @@ public interface MedicineService {
 	@POST
 	public int inputdata(@FormParam("size") int size, @FormParam("content")String content);
 
-//	@POST
-//	@Path("createTable")
-//	public int createTable(@PathParam("tableName") String tableName, @PathParam("columnStr") String columnStr);
-	
-//	@GET
-//	//@Path("queryAll")
-//	public int queryAll();
+	@POST
+	@Path("createTable")
+	public int createTable(@PathParam("columnStr") String columnStr);
 	
 	@GET
 	public JSONObject QueryByCondition1(@PathParam("rowkey") String rowkey);
 	
-//	@GET
-//	public int query(@FormParam("tableName") String tableName, @FormParam("rowkey") String rowkey);
 }
