@@ -74,10 +74,10 @@ public class RestNettyServerTest extends TestCase {
 
 	private static RootData[] prepareData() {
 		List<RootData> result = new ArrayList<RootData>(2 << 5);
-		for (int i = 0; i < 20000; i++) {
+		for (int i = 0; i < 2000; i++) {
 			RootData line1 = new RootData();
 			long version = System.currentTimeMillis();
-			line1 = line1.initId("keys20_" + i).initOrgan("sh/xinhua/waike/nima1").initTime(String.valueOf(version))
+			line1 = line1.initId("keys22_" + i).initOrgan("sh/xinhua/waike/nima1").initTime(String.valueOf(version))
 					.initQueue("catA,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB");
 			// JSONObject encode = JSONObject.fromObject(line1);
 			// System.out.println(encode.toString());
