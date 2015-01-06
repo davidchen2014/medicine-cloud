@@ -14,13 +14,13 @@ public class JobWorker extends UntypedActor {
 
 	@Override
 	public void onReceive(Object message) throws Exception {
-		logger.info("local worker receiveMessage:---" + message);
+		logger.info("remote worker receiveMessage:---" + message);
 		if (message instanceof JobRequest) {
 			// todo通过spring extension注入获得service
 			JobRequest request = (JobRequest) message;
 			HbaseService hbaseService = new HbaseServiceImpl();
 			hbaseService.insertData("medicine", request.getData());
-			logger.info("local worker receiveMessage:---" + request.getId()+"  "+request.getData().length);
+			logger.info("remote worker receiveMessage:---" + request.getId()+"  "+request.getData().length);
 		}
 	}
 

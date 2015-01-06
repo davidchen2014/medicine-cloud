@@ -36,22 +36,20 @@ public class MedicineServiceImpl implements MedicineService {
 	@Override
 	@POST
 	@Path("single")
-	public int inputdata(@FormParam("organ") String organ, @FormParam("time") String time,
+	public void inputdata(@FormParam("organ") String organ, @FormParam("time") String time,
 			@FormParam("queue") String queue) {
 		RootData line1 = new RootData();
 		line1 = line1.initOrgan(organ).initTime(time).initQueue(queue);
 		JobRequest job = new JobRequest(time, new RootData[] { line1 });
 		jobAcceptor.tell(job, jobAcceptor);
-		return Constants.SUCCESS;
 	}
 
 	@Override
 	@POST
-	public int inputdata(@FormParam("size") int size, @FormParam("content") String content) {
+	public void inputdata(@FormParam("size") int size, @FormParam("content") String content) {
 		RootData[] datas = (RootData[]) JSONArray.toArray(JSONArray.fromObject(content), RootData.class);
 		JobRequest job = new JobRequest(datas[0].getTime().getValue(), datas);
 		jobAcceptor.tell(job, jobAcceptor);
-		return Constants.SUCCESS;
 	}
 	
 	@Override

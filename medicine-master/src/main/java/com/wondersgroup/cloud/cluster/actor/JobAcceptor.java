@@ -28,7 +28,7 @@ public class JobAcceptor extends UntypedActor {
 
 	private int totalInstances = 100;
 	private int maxInstancesPerNode = 1;
-	private boolean allowLocalRoutees = true;// 本地测试可以用true
+	private boolean allowLocalRoutees = false;// 本地测试可以用true
 	private String useRole = "worker";
 	private LoggingAdapter logger = Logging.getLogger(super.getContext().system(), this);
 
@@ -54,7 +54,7 @@ public class JobAcceptor extends UntypedActor {
 			logger.info("root_path:::" + workerRouter.path().toString());
 
 			RootData[] datas = content.getData();
-			int length = 20000;
+			int length = 2000;
 			int start = 0;
 			int end = start + length;
 			int total = datas.length;
@@ -63,6 +63,7 @@ public class JobAcceptor extends UntypedActor {
 				if (end > total)
 					end = total;
 				RootData[] parts = Arrays.copyOfRange(datas, start, end);
+				logger.info("准备发送数据给worker::数量" + parts.length);
 				workerRouter.tell(new JobRequest(parts[0].getTime().getValue(), parts), super.getSelf());
 				start = end;
 				end = start + length;
@@ -83,7 +84,7 @@ public class JobAcceptor extends UntypedActor {
 	@Override
 	public void preStart() throws Exception {
 		server = new NettyServer();
-		server.start(8080);
+		server.start(8090);
 		MedicineService service = new MedicineServiceImpl(this.getSelf());
 		server.deploy(MedicineServiceImpl.class, service, "");
 	}

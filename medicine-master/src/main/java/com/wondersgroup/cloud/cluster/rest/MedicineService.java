@@ -16,11 +16,11 @@ public interface MedicineService {
 
 	@POST
 	@Path("single")
-	public int inputdata(@FormParam("organ") String organ, @FormParam("time") String time,
+	public void inputdata(@FormParam("organ") String organ, @FormParam("time") String time,
 			@FormParam("queue") String queue);
 
 	@POST
-	public int inputdata(@FormParam("size") int size, @FormParam("content")String content);
+	public void inputdata(@FormParam("size") int size, @FormParam("content")String content);
 
 	@POST
 	@Path("createTable")

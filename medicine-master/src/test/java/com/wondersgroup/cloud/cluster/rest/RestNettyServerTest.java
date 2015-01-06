@@ -56,7 +56,7 @@ public class RestNettyServerTest extends TestCase {
 	}
 
 	public void testCallRest() throws ClientProtocolException, IOException {
-		String url = "http://127.0.0.1:8080/sample/demo2";
+		String url = "http://10.1.65.104:8090/medicine/service";
 		// POST的URL
 		HttpPost httppost = new HttpPost(url);
 		// 建立HttpPost对象
@@ -69,17 +69,16 @@ public class RestNettyServerTest extends TestCase {
 		httppost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
 		// 设置编码
 		HttpResponse response = new DefaultHttpClient().execute(httppost);
-		assertTrue(response.getStatusLine().getStatusCode() == Constants.SUCCESS);
-		
+		assertTrue(response.getStatusLine().getStatusCode() == 204);
 	}
 
 	private static RootData[] prepareData() {
 		List<RootData> result = new ArrayList<RootData>(2 << 5);
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 20000; i++) {
 			RootData line1 = new RootData();
 			long version = System.currentTimeMillis();
-			line1 = line1.initOrgan("sh/xinhua/waike/nima1").initTime(String.valueOf(version))
-					.initQueue("catA,ratA,ratB");
+			line1 = line1.initId("keys20_" + i).initOrgan("sh/xinhua/waike/nima1").initTime(String.valueOf(version))
+					.initQueue("catA,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB");
 			// JSONObject encode = JSONObject.fromObject(line1);
 			// System.out.println(encode.toString());
 			result.add(line1);

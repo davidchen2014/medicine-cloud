@@ -9,20 +9,23 @@ akka {
 
   remote {
     enabled-transports = ["akka.remote.netty.tcp"]
+    netty.tcp.maximum-frame-size = 3000000b
     log-remote-lifecycle-events = off
     netty.tcp {
-      hostname = "192.168.171.138"
+      hostname = "10.1.65.107"
       port = 0
     }
   }
 
   cluster {
     seed-nodes = [
-    "akka.tcp://medicine@192.168.171.1:2551",
-    "akka.tcp://medicine@127.0.0.1:2552"
+    	"akka.tcp://medicine@10.1.65.106:2551"
     ]
+    auto-down-unreachable-after = off
+    auto-down = off
+    
     roles = ["worker"]
-    auto-down = on
+    
     role {
       seed.min-nr-of-members = 1
       worker.min-nr-of-members = 1
