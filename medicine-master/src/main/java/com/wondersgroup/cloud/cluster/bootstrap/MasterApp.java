@@ -15,7 +15,6 @@ import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import com.wondersgroup.cloud.cluster.actor.ClusterDomainEventListener;
 import com.wondersgroup.cloud.cluster.actor.JobAcceptor;
-import com.wondersgroup.cloud.medicine.model.JobRequest;
 import com.wondersgroup.cloud.medicine.model.RootData;
 
 public class MasterApp {
