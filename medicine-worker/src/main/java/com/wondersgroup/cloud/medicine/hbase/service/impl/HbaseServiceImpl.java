@@ -110,9 +110,10 @@ public class HbaseServiceImpl implements HbaseService{
 				System.out.println(tableName + " is exist,detele....");
 			}
 			HTableDescriptor tableDescriptor = new HTableDescriptor(tableName);
-			for (int i = 0; i < columnListArr.length; i++) {
-				tableDescriptor.addFamily(new HColumnDescriptor(columnListArr[i]));
-			}
+//			for (int i = 0; i < columnListArr.length; i++) {
+//				tableDescriptor.addFamily(new HColumnDescriptor(columnListArr[i]));
+//			}
+			tableDescriptor.addFamily(new HColumnDescriptor("column1"));
 			hBaseAdmin.createTable(tableDescriptor);
 		} catch (MasterNotRunningException e) {
 			e.printStackTrace();
@@ -155,19 +156,20 @@ public class HbaseServiceImpl implements HbaseService{
 		RootData rootData = (RootData) JSONObject.toBean(jsonObject, RootData.class);
 		
 		// while((str = br.readLine()) != null) {
-		for (int i = 1; i <= 200001; i++) {
+		for (int i = 1; i <= 5000; i++) {
 			Put put = new Put(("key_" + i).getBytes());// 一个PUT代表一行数据，再NEW一个PUT表示第二行数据,每行一个唯一的ROWKEY，此处rowkey为put构造方法中传入的值
-			put.add("hospitalName".getBytes(), null, (rootData.getOrgan().getPath().split("/")[0]).getBytes());// 本行数据的第一列
-			put.add("DepartmentName".getBytes(), null, (rootData.getOrgan().getPath().split("/")[1]).getBytes());// 本行数据的第三列
-			put.add("DepartmentChildName".getBytes(), null, (rootData.getOrgan().getPath().split("/")[2]).getBytes());// 本行数据的第三列
-			put.add("doorNo".getBytes(), null, (rootData.getOrgan().getPath().split("/")[3]).getBytes());// 本行数据的第三列
-			put.add("time".getBytes(), null, startTime.getBytes());// 本行数据的第三列
-			put.add("snapshot".getBytes(), null, rootData.getQueue().getValue().getBytes());// 本行数据的第三列
+			put.add("column1".getBytes(), "hospitalName".getBytes(), (rootData.getOrgan().getPath().split("/")[0]).getBytes());// 本行数据的第一列
+			put.add("column1".getBytes(), "DepartmentName".getBytes(), (rootData.getOrgan().getPath().split("/")[1]).getBytes());// 本行数据的第三列
+			put.add("column1".getBytes(), "DepartmentChildName".getBytes(), (rootData.getOrgan().getPath().split("/")[2]).getBytes());// 本行数据的第三列
+			put.add("column1".getBytes(), "doorNo".getBytes(), (rootData.getOrgan().getPath().split("/")[3]).getBytes());// 本行数据的第三列
+			put.add("column1".getBytes(), "time".getBytes(), startTime.getBytes());// 本行数据的第三列
+			put.add("column1".getBytes(), "snapshot".getBytes(), rootData.getQueue().getValue().getBytes());// 本行数据的第三列
+			put.add("column1".getBytes(), "totalInfo".getBytes(), (JSONObject.fromObject(rootData).toString()).getBytes());// 本行数据的第三列
 			// table.put(put);
 
 			puts.add(put);
 			// System.out.println(str);
-			 if(i%100000 == 0 ){
+			 if(i%1000 == 0 ){
 				 table.put(puts);
 				 puts.clear();
 			 }
@@ -218,13 +220,13 @@ public class HbaseServiceImpl implements HbaseService{
 		
 		for (int i = 0; i < rootData.length; i++) {
 			Put put = new Put(rootData[i].getId().getBytes());// 一个PUT代表一行数据，再NEW一个PUT表示第二行数据,每行一个唯一的ROWKEY，此处rowkey为put构造方法中传入的值
-			put.add("hospitalName".getBytes(), null, (rootData[i].getOrgan().getPath().split("/")[0]).getBytes());// 本行数据的第一列
-			put.add("DepartmentName".getBytes(), null, (rootData[i].getOrgan().getPath().split("/")[1]).getBytes());// 本行数据的第三列
-			put.add("DepartmentChildName".getBytes(), null, (rootData[i].getOrgan().getPath().split("/")[2]).getBytes());// 本行数据的第三列
-			put.add("doorNo".getBytes(), null, (rootData[i].getOrgan().getPath().split("/")[3]).getBytes());// 本行数据的第三列
-			put.add("time".getBytes(), null, startTime.getBytes());// 本行数据的第三列
-			put.add("snapshot".getBytes(), null, rootData[i].getQueue().getValue().getBytes());// 本行数据的第三列
-			put.add("totalInfo".getBytes(), null, (JSONObject.fromObject(rootData[i]).toString()).getBytes());// 本行数据的第三列
+			put.add("column1".getBytes(), "hospitalName".getBytes(), (rootData[i].getOrgan().getPath().split("/")[0]).getBytes());// 本行数据的第一列
+			put.add("column1".getBytes(), "DepartmentName".getBytes(), (rootData[i].getOrgan().getPath().split("/")[1]).getBytes());// 本行数据的第三列
+			put.add("column1".getBytes(), "DepartmentChildName".getBytes(), (rootData[i].getOrgan().getPath().split("/")[2]).getBytes());// 本行数据的第三列
+			put.add("column1".getBytes(), "doorNo".getBytes(), (rootData[i].getOrgan().getPath().split("/")[3]).getBytes());// 本行数据的第三列
+			put.add("column1".getBytes(), "time".getBytes(), startTime.getBytes());// 本行数据的第三列
+			put.add("column1".getBytes(), "snapshot".getBytes(), rootData[i].getQueue().getValue().getBytes());// 本行数据的第三列
+			put.add("column1".getBytes(), "totalInfo".getBytes(), (JSONObject.fromObject(rootData[i]).toString()).getBytes());// 本行数据的第三列
 			// table.put(put);
 			puts.add(put);
 		}

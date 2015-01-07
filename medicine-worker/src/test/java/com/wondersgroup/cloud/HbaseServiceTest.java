@@ -21,7 +21,7 @@ public class HbaseServiceTest extends TestCase{
 			String cmd = CommonUtil.readDataFromConsole("input cmd:");
 			if (null != cmd) {
 //				String[] cloumnStr = {"hospitalName","DepartmentName","DepartmentChildName","doorNo","time","snapshot"};
-				hbaseService.insertData("test");
+				hbaseService.insertData("medicine");
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
