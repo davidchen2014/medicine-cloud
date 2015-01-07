@@ -58,26 +58,36 @@ public class RestNettyServerTest extends TestCase {
 	public void testCallRest() throws ClientProtocolException, IOException {
 		String url = "http://10.1.65.104:8090/medicine/service";
 		// POST的URL
-		HttpPost httppost = new HttpPost(url);
+		HttpPost httppost = null;// new HttpPost(url);
 		// 建立HttpPost对象
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		// 建立一个NameValuePair数组，用于存储欲传送的参数
-		RootData[] datas = prepareData();
-		params.add(new BasicNameValuePair("size", String.valueOf(datas.length)));
-		params.add(new BasicNameValuePair("content", JSONArray.fromObject(datas).toString()));
-		// 添加参数
-		httppost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-		// 设置编码
-		HttpResponse response = new DefaultHttpClient().execute(httppost);
-		assertTrue(response.getStatusLine().getStatusCode() == 204);
+		long startTime = System.currentTimeMillis();
+		
+		for(int k=4540; k<4740; k++){
+			RootData[] datas = prepareData(k);
+			params.clear();
+			params.add(new BasicNameValuePair("size", String.valueOf(datas.length)));
+			params.add(new BasicNameValuePair("content", JSONArray.fromObject(datas).toString()));
+			// 添加参数
+			httppost = new HttpPost(url);
+			httppost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+			// 设置编码
+			HttpResponse response = new DefaultHttpClient().execute(httppost);
+			
+		}
+		
+		long endTime = System.currentTimeMillis();
+		logger.info("total time:"+(endTime-startTime)+" ms");
+//		assertTrue(response.getStatusLine().getStatusCode() == 204);
 	}
 
-	private static RootData[] prepareData() {
+	private static RootData[] prepareData(int k) {
 		List<RootData> result = new ArrayList<RootData>(2 << 5);
-		for (int i = 0; i < 2000; i++) {
+		for (int i = 0; i < 1000; i++) {
 			RootData line1 = new RootData();
 			long version = System.currentTimeMillis();
-			line1 = line1.initId("keys22_" + i).initOrgan("sh/xinhua/waike/nima1").initTime(String.valueOf(version))
+			line1 = line1.initId("keys_"+k+"_" + i).initOrgan("sh/xinhua/waike/nima1").initTime(String.valueOf(version))
 					.initQueue("catA,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB");
 			// JSONObject encode = JSONObject.fromObject(line1);
 			// System.out.println(encode.toString());

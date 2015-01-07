@@ -22,7 +22,8 @@ import com.wondersgroup.cloud.medicine.model.RootData;
 @Path("medicine/service")
 @Produces({MediaType.APPLICATION_JSON})
 public class MedicineServiceImpl implements MedicineService {
-
+	private static final String tableName = "medicine";
+	
 	private ActorRef jobAcceptor;
 
 	private HbaseService hbaseService = new HbaseServiceImpl();
@@ -51,27 +52,14 @@ public class MedicineServiceImpl implements MedicineService {
 		jobAcceptor.tell(job, jobAcceptor);
 	}
 	
-//	@Override
-//	@POST
-//	@Path("createTable")
-//	public int createTable(@FormParam("tableName") String tableName, @FormParam("columnStr") String columnStr){
-//		String[] columnArr = columnStr.split(",");
-//		hbaseService.createTable(tableName, columnArr);
-//		return Constants.SUCCESS;
-//	}
-	
-//	@Override
-//	@GET
-//	//@Path("queryAll")
-//	public int queryAll(){
-//		try {
-//			hbaseService.QueryAll();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		return Constants.SUCCESS;
-//	}
+	@Override
+	@POST
+	@Path("create")
+	public int createTable(@FormParam("columnStr") String columnStr){
+		String[] columnArr = columnStr.split(",");
+		hbaseService.createTable(tableName, columnArr);
+		return Constants.SUCCESS;
+	}
 	
 	@Override
 	@GET
@@ -79,24 +67,11 @@ public class MedicineServiceImpl implements MedicineService {
 	public JSONObject QueryByCondition1(@PathParam("rowkey") String rowkey){
 		String rowInfo = "";
 		try {
-			rowInfo = hbaseService.QueryByCondition1("test", rowkey);
+			rowInfo = hbaseService.QueryByCondition1(tableName, rowkey);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return JSONObject.fromObject(rowInfo);
 	}
-//	
-//	@Override
-//	@POST
-//	@Path("query")
-//	public int query(@FormParam("tableName") String tableName, @FormParam("rowkey") String rowkey){
-//		try {
-//			hbaseService.QueryByCondition1(tableName, rowkey);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		return Constants.SUCCESS;
-//	}
 }

@@ -47,7 +47,7 @@ public class MedicineServiceTest extends TestCase {
 	
 	
 	public void createTableTest() throws ClientProtocolException, IOException{
-		String cloumnStr= "hospitalName,DepartmentName,DepartmentChildName,doorNo,time,snapshot";
+		String cloumnStr= "hospitalName,DepartmentName,DepartmentChildName,doorNo,time,snapshot,totalInfo";
 		String url = "http://127.0.0.1:8080/medicine/service/createTable";
 		// POST的URL
 		HttpPost httppost = new HttpPost(url);
@@ -76,7 +76,7 @@ public class MedicineServiceTest extends TestCase {
 		// 添加参数
 		httppost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
 		// 设置编码
-				HttpResponse response = new DefaultHttpClient().execute(httppost);
+		HttpResponse response = new DefaultHttpClient().execute(httppost);
 		assertTrue(response.getStatusLine().getStatusCode() == Constants.SUCCESS);
 		
 	}
@@ -106,7 +106,7 @@ public class MedicineServiceTest extends TestCase {
 		for (int i = 0; i < 20000; i++) {
 			RootData line1 = new RootData();
 			long version = System.currentTimeMillis();
-			line1 = line1.initId("key_"+i).initOrgan("sh/xinhua/waike/nima1").initTime(String.valueOf(version))
+			line1 = line1.initId("key_2_"+i).initOrgan("sh/xinhua/waike/nima1").initTime(String.valueOf(version))
 					.initQueue("catA,ratA,ratB");
 			// JSONObject encode = JSONObject.fromObject(line1);
 			// System.out.println(encode.toString());
