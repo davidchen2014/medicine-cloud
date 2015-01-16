@@ -11,12 +11,12 @@ import com.wondersgroup.cloud.medicine.hbase.util.CommonUtil;
 public class HbaseServiceTest extends TestCase{
 	HbaseService hbaseService = new HbaseServiceImpl();
 
-	public void createTableTest() {
+	public void testCreateTableTest() {
 		String[] cloumnStr = {"hospitalName","DepartmentName","DepartmentChildName","doorNo","time","snapshot","totalInfo"};
 		hbaseService.createTable("medicine",cloumnStr);
 	}
 	
-	public void insertDataTest() {
+	public void testInsertDataTest() {
 		try {
 			String cmd = CommonUtil.readDataFromConsole("input cmd:");
 			if (null != cmd) {
@@ -72,7 +72,7 @@ public class HbaseServiceTest extends TestCase{
 		hbaseService.QueryByCondition3("test",columnNameArr,columnValueArr);
 	}
 	
-	public void dropTableTest() {
+	public void testDropTableTest() {
 		hbaseService.dropTable("medicine");
 	}
 }

@@ -25,7 +25,6 @@ akka {
     	"akka.tcp://medicine@10.1.65.106:2551"
     ]
     auto-down-unreachable-after = off
-    auto-down = off
     
     roles = ["seed"]
 

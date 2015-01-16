@@ -19,10 +19,9 @@ akka {
 
   cluster {
     seed-nodes = [
-    	"akka.tcp://medicine@10.1.65.106:2551"
+    	"akka.tcp://medicine@10.141.222.247:2551"
     ]
     auto-down-unreachable-after = off
-    auto-down = off
     
     roles = ["worker"]
     

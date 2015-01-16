@@ -1,9 +1,10 @@
 package com.wondersgroup.cloud.medicine.hbase.util;
 
-import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.conf.Configuration;
 
 public class HbaseConnection {
+	
 	private static Configuration hbaseConfig = null;
 	// public static HBaseAdmin hBaseAdmin = null;
 	static {

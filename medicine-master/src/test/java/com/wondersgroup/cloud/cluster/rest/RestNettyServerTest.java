@@ -23,7 +23,7 @@ import com.wondersgroup.cloud.medicine.model.RootData;
 
 public class RestNettyServerTest extends TestCase {
 
-	private Log logger = LogFactory.getLog(RestNettyServerTest.class);
+	private static Log logger = LogFactory.getLog(RestNettyServerTest.class);
 
 	private RestServer server;
 
@@ -34,8 +34,8 @@ public class RestNettyServerTest extends TestCase {
 
 	@Override
 	protected void tearDown() throws Exception {
-//		server.stop();
-//		logger.info("server stop");
+		// server.stop();
+		// logger.info("server stop");
 	}
 
 	public void testDeployInstance() {
@@ -55,16 +55,20 @@ public class RestNettyServerTest extends TestCase {
 		// call like this pattern: http://localhost:8080/sample/demo2/dabian
 	}
 
-	public void testCallRest() throws ClientProtocolException, IOException {
-		String url = "http://10.1.65.104:8090/medicine/service";
+	public static void main(String[] args) throws ClientProtocolException, IOException {
+		RestNettyServerTest.testCallRest();
+	}
+
+	public static void testCallRest() throws ClientProtocolException, IOException {
+		String url = "http://10.141.222.246:8090/medicine/service";
 		// POST的URL
 		HttpPost httppost = null;// new HttpPost(url);
 		// 建立HttpPost对象
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		// 建立一个NameValuePair数组，用于存储欲传送的参数
 		long startTime = System.currentTimeMillis();
-		
-		for(int k=4540; k<4740; k++){
+
+		for (int k = 0; k < 400; k++) {
 			RootData[] datas = prepareData(k);
 			params.clear();
 			params.add(new BasicNameValuePair("size", String.valueOf(datas.length)));
@@ -74,12 +78,11 @@ public class RestNettyServerTest extends TestCase {
 			httppost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
 			// 设置编码
 			HttpResponse response = new DefaultHttpClient().execute(httppost);
-			
 		}
-		
+
 		long endTime = System.currentTimeMillis();
-		logger.info("total time:"+(endTime-startTime)+" ms");
-//		assertTrue(response.getStatusLine().getStatusCode() == 204);
+		logger.info("total time:" + (endTime - startTime) + " ms");
+		// assertTrue(response.getStatusLine().getStatusCode() == 204);
 	}
 
 	private static RootData[] prepareData(int k) {
@@ -87,8 +90,12 @@ public class RestNettyServerTest extends TestCase {
 		for (int i = 0; i < 1000; i++) {
 			RootData line1 = new RootData();
 			long version = System.currentTimeMillis();
-			line1 = line1.initId("keys_"+k+"_" + i).initOrgan("sh/xinhua/waike/nima1").initTime(String.valueOf(version))
-					.initQueue("catA,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB");
+			line1 = line1
+					.initId("keys_" + k + "_" + i)
+					.initOrgan("sh/xinhua/waike/nima1")
+					.initTime(String.valueOf(version))
+					.initQueue(
+							"catA,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratBcatA,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratBcatA,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB");
 			// JSONObject encode = JSONObject.fromObject(line1);
 			// System.out.println(encode.toString());
 			result.add(line1);

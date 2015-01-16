@@ -29,7 +29,7 @@ public class MedicineServiceTest extends TestCase {
 	private Log logger = LogFactory.getLog(RestNettyServerTest.class);
 	
 	public void inputdataTest() throws ClientProtocolException, IOException{
-		String url = "http://127.0.0.1:8080/medicine/service";
+		String url = "http://10.141.222.246:8080/medicine/service";
 		// POST的URL
 		HttpPost httppost = new HttpPost(url);
 		// 建立HttpPost对象

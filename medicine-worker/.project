@@ -1,9 +1,7 @@
 <projectDescription>
   <name>medicine-worker</name>
   <comment>The parent project of data</comment>
-  <projects>
-    <project>medicine-module</project>
-  </projects>
+  <projects/>
   <buildSpec>
     <buildCommand>
       <name>org.eclipse.jdt.core.javabuilder</name>

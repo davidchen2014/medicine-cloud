@@ -1,0 +1,250 @@
+2015-01-07 11:12:01 [main:0] - [ WARN] Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2015-01-07 11:12:01 [main:410] - [ERROR] Failed to locate the winutils binary in the hadoop binary path
+java.io.IOException: Could not locate executable null\bin\winutils.exe in the Hadoop binaries.
+	at org.apache.hadoop.util.Shell.getQualifiedBinPath(Shell.java:278)
+	at org.apache.hadoop.util.Shell.getWinUtilsPath(Shell.java:300)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:293)
+	at org.apache.hadoop.util.StringUtils.<clinit>(StringUtils.java:76)
+	at org.apache.hadoop.conf.Configuration.getStrings(Configuration.java:1514)
+	at org.apache.hadoop.hbase.zookeeper.ZKConfig.makeZKProps(ZKConfig.java:113)
+	at org.apache.hadoop.hbase.zookeeper.ZKConfig.getZKQuorumServersString(ZKConfig.java:265)
+	at org.apache.hadoop.hbase.zookeeper.ZooKeeperWatcher.<init>(ZooKeeperWatcher.java:159)
+	at org.apache.hadoop.hbase.zookeeper.ZooKeeperWatcher.<init>(ZooKeeperWatcher.java:134)
+	at org.apache.hadoop.hbase.client.ZooKeeperKeepAliveConnection.<init>(ZooKeeperKeepAliveConnection.java:43)
+	at org.apache.hadoop.hbase.client.HConnectionManager$HConnectionImplementation.getKeepAliveZooKeeperWatcher(HConnectionManager.java:1768)
+	at org.apache.hadoop.hbase.client.ZooKeeperRegistry.getClusterId(ZooKeeperRegistry.java:82)
+	at org.apache.hadoop.hbase.client.HConnectionManager$HConnectionImplementation.retrieveClusterId(HConnectionManager.java:857)
+	at org.apache.hadoop.hbase.client.HConnectionManager$HConnectionImplementation.<init>(HConnectionManager.java:662)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.apache.hadoop.hbase.client.HConnectionManager.createConnection(HConnectionManager.java:414)
+	at org.apache.hadoop.hbase.client.HConnectionManager.createConnection(HConnectionManager.java:393)
+	at org.apache.hadoop.hbase.client.HConnectionManager.getConnection(HConnectionManager.java:274)
+	at org.apache.hadoop.hbase.client.HBaseAdmin.<init>(HBaseAdmin.java:183)
+	at com.wondersgroup.cloud.medicine.hbase.service.impl.HbaseServiceImpl.dropTable(HbaseServiceImpl.java:250)
+	at com.wondersgroup.cloud.HbaseServiceTest.dropTableTest(HbaseServiceTest.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at junit.framework.TestCase.runTest(TestCase.java:154)
+	at junit.framework.TestCase.runBare(TestCase.java:127)
+	at junit.framework.TestResult$1.protect(TestResult.java:106)
+	at junit.framework.TestResult.runProtected(TestResult.java:124)
+	at junit.framework.TestResult.run(TestResult.java:109)
+	at junit.framework.TestCase.run(TestCase.java:118)
+	at org.eclipse.jdt.internal.junit.runner.junit3.JUnit3TestReference.run(JUnit3TestReference.java:130)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197)
+2015-01-07 11:12:01 [main:493] - [ INFO] Client environment:zookeeper.version=3.3.3-1073969, built on 02/23/2011 22:27 GMT
+2015-01-07 11:12:01 [main:493] - [ INFO] Client environment:host.name=BING-PC
+2015-01-07 11:12:01 [main:496] - [ INFO] Client environment:java.version=1.6.0_10
+2015-01-07 11:12:01 [main:496] - [ INFO] Client environment:java.vendor=Sun Microsystems Inc.
+2015-01-07 11:12:01 [main:496] - [ INFO] Client environment:java.home=D:\Program Files\Java\jre6
+2015-01-07 11:12:01 [main:497] - [ INFO] Client environment:java.class.path=D:\workspace\medicine-cloud\medicine-worker\target\test-classes;D:\workspace\medicine-cloud\medicine-worker\target\classes;D:\maven\repository\javax\activation\activation\1.1\activation-1.1.jar;D:\maven\repository\com\typesafe\akka\akka-actor_2.10\2.3.1\akka-actor_2.10-2.3.1.jar;D:\maven\repository\com\typesafe\akka\akka-cluster_2.10\2.3.1\akka-cluster_2.10-2.3.1.jar;D:\maven\repository\com\typesafe\akka\akka-contrib_2.10\2.3.1\akka-contrib_2.10-2.3.1.jar;D:\maven\repository\com\typesafe\akka\akka-persistence-experimental_2.10\2.3.1\akka-persistence-experimental_2.10-2.3.1.jar;D:\maven\repository\com\typesafe\akka\akka-remote_2.10\2.3.1\akka-remote_2.10-2.3.1.jar;D:\maven\repository\com\typesafe\akka\akka-testkit_2.10\2.3.1\akka-testkit_2.10-2.3.1.jar;D:\maven\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar;D:\maven\repository\asm\asm\3.1\asm-3.1.jar;D:\maven\repository\org\apache\avro\avro\1.7.4\avro-1.7.4.jar;D:\maven\repository\cglib\cglib-nodep\2.2\cglib-nodep-2.2.jar;D:\maven\repository\commons-beanutils\commons-beanutils\1.8.0\commons-beanutils-1.8.0.jar;D:\maven\repository\commons-beanutils\commons-beanutils-core\1.8.0\commons-beanutils-core-1.8.0.jar;D:\maven\repository\commons-cli\commons-cli\1.2\commons-cli-1.2.jar;D:\maven\repository\commons-codec\commons-codec\1.7\commons-codec-1.7.jar;D:\maven\repository\commons-collections\commons-collections\3.2.1\commons-collections-3.2.1.jar;D:\maven\repository\org\apache\commons\commons-compress\1.4.1\commons-compress-1.4.1.jar;D:\maven\repository\commons-configuration\commons-configuration\1.6\commons-configuration-1.6.jar;D:\maven\repository\commons-dbcp\commons-dbcp\1.2.2\commons-dbcp-1.2.2.jar;D:\maven\repository\commons-digester\commons-digester\1.8\commons-digester-1.8.jar;D:\maven\repository\commons-el\commons-el\1.0\commons-el-1.0.jar;D:\maven\repository\commons-httpclient\commons-httpclient\3.1\commons-httpclient-3.1.jar;D:\maven\repository\commons-io\commons-io\2.1\commons-io-2.1.jar;D:\maven\repository\commons-lang\commons-lang\2.4\commons-lang-2.4.jar;D:\maven\repository\commons-logging\commons-logging\1.1.1\commons-logging-1.1.1.jar;D:\maven\repository\org\apache\commons\commons-math\2.1\commons-math-2.1.jar;D:\maven\repository\commons-net\commons-net\3.1\commons-net-3.1.jar;D:\maven\repository\commons-pool\commons-pool\1.6\commons-pool-1.6.jar;D:\maven\repository\com\typesafe\config\1.2.0\config-1.2.0.jar;D:\maven\repository\com\netflix\curator\curator-client\1.0.1\curator-client-1.0.1.jar;D:\maven\repository\com\netflix\curator\curator-framework\1.0.1\curator-framework-1.0.1.jar;D:\maven\repository\org\easymock\easymock\3.0\easymock-3.0.jar;D:\maven\repository\org\easymock\easymockclassextension\3.0\easymockclassextension-3.0.jar;D:\maven\repository\net\sf\ezmorph\ezmorph\1.0.6\ezmorph-1.0.6.jar;D:\maven\repository\com\github\stephenc\findbugs\findbugs-annotations\1.3.9-1\findbugs-annotations-1.3.9-1.jar;D:\maven\repository\com\google\guava\guava\10.0.1\guava-10.0.1.jar;D:\maven\repository\com\google\inject\guice\3.0\guice-3.0.jar;D:\maven\repository\com\google\inject\extensions\guice-servlet\3.0\guice-servlet-3.0.jar;D:\maven\repository\org\apache\hadoop\hadoop-annotations\2.2.0\hadoop-annotations-2.2.0.jar;D:\maven\repository\org\apache\hadoop\hadoop-auth\2.2.0\hadoop-auth-2.2.0.jar;D:\maven\repository\org\apache\hadoop\hadoop-common\2.2.0\hadoop-common-2.2.0.jar;D:\maven\repository\org\apache\hadoop\hadoop-mapreduce-client-core\2.2.0\hadoop-mapreduce-client-core-2.2.0.jar;D:\maven\repository\org\apache\hadoop\hadoop-yarn-api\2.2.0\hadoop-yarn-api-2.2.0.jar;D:\maven\repository\org\apache\hadoop\hadoop-yarn-common\2.2.0\hadoop-yarn-common-2.2.0.jar;D:\maven\repository\org\fusesource\hawtjni\hawtjni-runtime\1.8\hawtjni-runtime-1.8.jar;D:\maven\repository\org\apache\hbase\hbase-client\0.98.0-hadoop2\hbase-client-0.98.0-hadoop2.jar;D:\maven\repository\org\apache\hbase\hbase-common\0.98.0-hadoop2\hbase-common-0.98.0-hadoop2.jar;D:\maven\repository\org\apache\hbase\hbase-protocol\0.98.0-hadoop2\hbase-protocol-0.98.0-hadoop2.jar;D:\maven\repository\org\cloudera\htrace\htrace-core\2.04\htrace-core-2.04.jar;D:\maven\repository\org\codehaus\jackson\jackson-core-asl\1.8.8\jackson-core-asl-1.8.8.jar;D:\maven\repository\org\codehaus\jackson\jackson-jaxrs\1.8.3\jackson-jaxrs-1.8.3.jar;D:\maven\repository\org\codehaus\jackson\jackson-mapper-asl\1.8.8\jackson-mapper-asl-1.8.8.jar;D:\maven\repository\org\codehaus\jackson\jackson-xc\1.8.3\jackson-xc-1.8.3.jar;D:\maven\repository\javax\inject\javax.inject\1\javax.inject-1.jar;D:\maven\repository\javax\xml\bind\jaxb-api\2.2.2\jaxb-api-2.2.2.jar;D:\maven\repository\com\sun\xml\bind\jaxb-impl\2.2.3-1\jaxb-impl-2.2.3-1.jar;D:\Program Files\Java\jdk1.6.0_10\lib\tools.jar;D:\maven\repository\com\sun\jersey\jersey-core\1.9\jersey-core-1.9.jar;D:\maven\repository\com\sun\jersey\contribs\jersey-guice\1.9\jersey-guice-1.9.jar;D:\maven\repository\com\sun\jersey\jersey-json\1.9\jersey-json-1.9.jar;D:\maven\repository\com\sun\jersey\jersey-server\1.9\jersey-server-1.9.jar;D:\maven\repository\net\java\dev\jets3t\jets3t\0.6.1\jets3t-0.6.1.jar;D:\maven\repository\org\codehaus\jettison\jettison\1.1\jettison-1.1.jar;D:\maven\repository\org\mortbay\jetty\jetty\6.1.26\jetty-6.1.26.jar;D:\maven\repository\org\mortbay\jetty\jetty-util\6.1.26\jetty-util-6.1.26.jar;D:\maven\repository\jline\jline\0.9.94\jline-0.9.94.jar;D:\maven\repository\com\googlecode\jmockit\jmockit\0.999.8\jmockit-0.999.8.jar;D:\maven\repository\com\jcraft\jsch\0.1.42\jsch-0.1.42.jar;D:\maven\repository\org\json\json\20090211\json-20090211.jar;D:\maven\repository\net\sf\json-lib\json-lib\2.3\json-lib-2.3-jdk15.jar;D:\maven\repository\com\google\code\findbugs\jsr305\1.3.9\jsr305-1.3.9.jar;D:\maven\repository\junit\junit\3.8.1\junit-3.8.1.jar;D:\maven\repository\org\iq80\leveldb\leveldb\0.5\leveldb-0.5.jar;D:\maven\repository\org\iq80\leveldb\leveldb-api\0.5\leveldb-api-0.5.jar;D:\maven\repository\org\fusesource\leveldbjni\leveldbjni\1.7\leveldbjni-1.7.jar;D:\maven\repository\org\fusesource\leveldbjni\leveldbjni-all\1.7\leveldbjni-all-1.7.jar;D:\maven\repository\org\fusesource\leveldbjni\leveldbjni-linux32\1.5\leveldbjni-linux32-1.5.jar;D:\maven\repository\org\fusesource\leveldbjni\leveldbjni-linux64\1.5\leveldbjni-linux64-1.5.jar;D:\maven\repository\org\fusesource\leveldbjni\leveldbjni-osx\1.5\leveldbjni-osx-1.5.jar;D:\maven\repository\org\fusesource\leveldbjni\leveldbjni-win32\1.5\leveldbjni-win32-1.5.jar;D:\maven\repository\org\fusesource\leveldbjni\leveldbjni-win64\1.5\leveldbjni-win64-1.5.jar;D:\maven\repository\log4j\log4j\1.2.14\log4j-1.2.14.jar;D:\workspace\medicine-cloud\medicine-module\target\classes;D:\maven\repository\org\objenesis\objenesis\1.2\objenesis-1.2.jar;D:\maven\repository\mysql\mysql-connector-java\5.1.10\mysql-connector-java-5.1.10.jar;D:\maven\repository\io\netty\netty\3.8.0.Final\netty-3.8.0.Final.jar;D:\maven\repository\com\thoughtworks\paranamer\paranamer\2.3\paranamer-2.3.jar;D:\maven\repository\com\google\protobuf\protobuf-java\2.5.0\protobuf-java-2.5.0.jar;D:\maven\repository\org\scala-lang\scala-library\2.10.3\scala-library-2.10.3.jar;D:\maven\repository\org\slf4j\slf4j-api\1.6.3\slf4j-api-1.6.3.jar;D:\maven\repository\org\slf4j\slf4j-log4j12\1.7.5\slf4j-log4j12-1.7.5.jar;D:\maven\repository\org\xerial\snappy\snappy-java\1.0.4.1\snappy-java-1.0.4.1.jar;D:\maven\repository\stax\stax-api\1.0.1\stax-api-1.0.1.jar;D:\maven\repository\org\uncommons\maths\uncommons-maths\1.2.2a\uncommons-maths-1.2.2a.jar;D:\maven\repository\xmlenc\xmlenc\0.52\xmlenc-0.52.jar;D:\maven\repository\org\tukaani\xz\1.0\xz-1.0.jar;D:\maven\repository\org\apache\zookeeper\zookeeper\3.3.3\zookeeper-3.3.3.jar;/D:/eclipse-jee-indigo-win32/configuration/org.eclipse.osgi/bundles/322/1/.cp/;/D:/eclipse-jee-indigo-win32/configuration/org.eclipse.osgi/bundles/323/1/.cp/
+2015-01-07 11:12:01 [main:498] - [ INFO] Client environment:java.library.path=D:\Program Files\Java\jre6\bin;.;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:/Program Files/Java/jre7/bin/client;D:/Program Files/Java/jre7/bin;D:/Program Files/Java/jre7/lib/i386;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;D:\Program Files\Java\jdk1.6.0_10\bin;D:\apache-maven-3.2.3\bin;;.;;D:\eclipse-jee-indigo-win32;;.;
+2015-01-07 11:12:01 [main:498] - [ INFO] Client environment:java.io.tmpdir=C:\Users\BING\AppData\Local\Temp\
+2015-01-07 11:12:01 [main:500] - [ INFO] Client environment:java.compiler=<NA>
+2015-01-07 11:12:01 [main:500] - [ INFO] Client environment:os.name=Windows Vista
+2015-01-07 11:12:01 [main:501] - [ INFO] Client environment:os.arch=x86
+2015-01-07 11:12:01 [main:501] - [ INFO] Client environment:os.version=6.1
+2015-01-07 11:12:01 [main:501] - [ INFO] Client environment:user.name=BING
+2015-01-07 11:12:01 [main:502] - [ INFO] Client environment:user.home=C:\Users\BING
+2015-01-07 11:12:01 [main:502] - [ INFO] Client environment:user.dir=D:\workspace\medicine-cloud\medicine-worker
+2015-01-07 11:12:01 [main:503] - [ INFO] Initiating client connection, connectString=10.1.64.69:2181,10.1.64.70:2181,10.1.64.68:2181 sessionTimeout=30000 watcher=hconnection-0x1f8c6df, quorum=10.1.64.69:2181,10.1.64.70:2181,10.1.64.68:2181, baseZNode=/hbase-unsecure
+2015-01-07 11:12:01 [main-SendThread():665] - [ INFO] Opening socket connection to server /10.1.64.69:2181
+2015-01-07 11:12:01 [main:678] - [ INFO] Process identifier=hconnection-0x1f8c6df connecting to ZooKeeper ensemble=10.1.64.69:2181,10.1.64.70:2181,10.1.64.68:2181
+2015-01-07 11:12:01 [main-SendThread(bd-09:2181):680] - [ INFO] Socket connection established to bd-09/10.1.64.69:2181, initiating session
+2015-01-07 11:12:01 [main-SendThread(bd-09:2181):705] - [ INFO] Session establishment complete on server bd-09/10.1.64.69:2181, sessionid = 0x24abe2c4ae6000e, negotiated timeout = 30000
+2015-01-07 11:12:02 [main:1024] - [ WARN] Failed to identify the fs of dir hdfs://bd-06:8020/apps/hbase/data/lib, ignored
+java.io.IOException: No FileSystem for scheme: hdfs
+	at org.apache.hadoop.fs.FileSystem.getFileSystemClass(FileSystem.java:2421)
+	at org.apache.hadoop.fs.FileSystem.createFileSystem(FileSystem.java:2428)
+	at org.apache.hadoop.fs.FileSystem.access$200(FileSystem.java:88)
+	at org.apache.hadoop.fs.FileSystem$Cache.getInternal(FileSystem.java:2467)
+	at org.apache.hadoop.fs.FileSystem$Cache.get(FileSystem.java:2449)
+	at org.apache.hadoop.fs.FileSystem.get(FileSystem.java:367)
+	at org.apache.hadoop.fs.Path.getFileSystem(Path.java:287)
+	at org.apache.hadoop.hbase.util.DynamicClassLoader.<init>(DynamicClassLoader.java:104)
+	at org.apache.hadoop.hbase.protobuf.ProtobufUtil.<clinit>(ProtobufUtil.java:201)
+	at org.apache.hadoop.hbase.ClusterId.parseFrom(ClusterId.java:64)
+	at org.apache.hadoop.hbase.zookeeper.ZKClusterId.readClusterIdZNode(ZKClusterId.java:69)
+	at org.apache.hadoop.hbase.client.ZooKeeperRegistry.getClusterId(ZooKeeperRegistry.java:83)
+	at org.apache.hadoop.hbase.client.HConnectionManager$HConnectionImplementation.retrieveClusterId(HConnectionManager.java:857)
+	at org.apache.hadoop.hbase.client.HConnectionManager$HConnectionImplementation.<init>(HConnectionManager.java:662)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.apache.hadoop.hbase.client.HConnectionManager.createConnection(HConnectionManager.java:414)
+	at org.apache.hadoop.hbase.client.HConnectionManager.createConnection(HConnectionManager.java:393)
+	at org.apache.hadoop.hbase.client.HConnectionManager.getConnection(HConnectionManager.java:274)
+	at org.apache.hadoop.hbase.client.HBaseAdmin.<init>(HBaseAdmin.java:183)
+	at com.wondersgroup.cloud.medicine.hbase.service.impl.HbaseServiceImpl.dropTable(HbaseServiceImpl.java:250)
+	at com.wondersgroup.cloud.HbaseServiceTest.dropTableTest(HbaseServiceTest.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at junit.framework.TestCase.runTest(TestCase.java:154)
+	at junit.framework.TestCase.runBare(TestCase.java:127)
+	at junit.framework.TestResult$1.protect(TestResult.java:106)
+	at junit.framework.TestResult.runProtected(TestResult.java:124)
+	at junit.framework.TestResult.run(TestResult.java:109)
+	at junit.framework.TestCase.run(TestCase.java:118)
+	at org.eclipse.jdt.internal.junit.runner.junit3.JUnit3TestReference.run(JUnit3TestReference.java:130)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197)
+2015-01-07 11:12:03 [main:1939] - [ INFO] Started disable of medicine
+2015-01-07 11:12:03 [main:2027] - [ INFO] Initiating client connection, connectString=10.1.64.69:2181,10.1.64.70:2181,10.1.64.68:2181 sessionTimeout=30000 watcher=catalogtracker-on-hconnection-0x1f8c6df, quorum=10.1.64.69:2181,10.1.64.70:2181,10.1.64.68:2181, baseZNode=/hbase-unsecure
+2015-01-07 11:12:03 [main-SendThread():2032] - [ INFO] Opening socket connection to server /10.1.64.70:2181
+2015-01-07 11:12:03 [main:2032] - [ INFO] Process identifier=catalogtracker-on-hconnection-0x1f8c6df connecting to ZooKeeper ensemble=10.1.64.69:2181,10.1.64.70:2181,10.1.64.68:2181
+2015-01-07 11:12:03 [main-SendThread(bd-10:2181):2036] - [ INFO] Socket connection established to bd-10/10.1.64.70:2181, initiating session
+2015-01-07 11:12:03 [main-SendThread(bd-10:2181):2039] - [ INFO] Session establishment complete on server bd-10/10.1.64.70:2181, sessionid = 0x34a9a1656710073, negotiated timeout = 30000
+2015-01-07 11:12:03 [main:2102] - [ INFO] hadoop.native.lib is deprecated. Instead, use io.native.lib.available
+2015-01-07 11:12:03 [main:2754] - [ INFO] Session: 0x34a9a1656710073 closed
+2015-01-07 11:12:03 [main-EventThread:2755] - [ INFO] EventThread shut down
+2015-01-07 11:12:04 [main:2907] - [ INFO] Initiating client connection, connectString=10.1.64.69:2181,10.1.64.70:2181,10.1.64.68:2181 sessionTimeout=30000 watcher=catalogtracker-on-hconnection-0x1f8c6df, quorum=10.1.64.69:2181,10.1.64.70:2181,10.1.64.68:2181, baseZNode=/hbase-unsecure
+2015-01-07 11:12:04 [main:2912] - [ INFO] Process identifier=catalogtracker-on-hconnection-0x1f8c6df connecting to ZooKeeper ensemble=10.1.64.69:2181,10.1.64.70:2181,10.1.64.68:2181
+2015-01-07 11:12:04 [main-SendThread():2912] - [ INFO] Opening socket connection to server /10.1.64.69:2181
+2015-01-07 11:12:04 [main-SendThread(bd-09:2181):2915] - [ INFO] Socket connection established to bd-09/10.1.64.69:2181, initiating session
+2015-01-07 11:12:04 [main-SendThread(bd-09:2181):2919] - [ INFO] Session establishment complete on server bd-09/10.1.64.69:2181, sessionid = 0x24abe2c4ae6000f, negotiated timeout = 30000
+2015-01-07 11:12:04 [main:2938] - [ INFO] Session: 0x24abe2c4ae6000f closed
+2015-01-07 11:12:04 [main-EventThread:2938] - [ INFO] EventThread shut down
+2015-01-07 11:12:04 [main:3143] - [ INFO] Initiating client connection, connectString=10.1.64.69:2181,10.1.64.70:2181,10.1.64.68:2181 sessionTimeout=30000 watcher=catalogtracker-on-hconnection-0x1f8c6df, quorum=10.1.64.69:2181,10.1.64.70:2181,10.1.64.68:2181, baseZNode=/hbase-unsecure
+2015-01-07 11:12:04 [main:3147] - [ INFO] Process identifier=catalogtracker-on-hconnection-0x1f8c6df connecting to ZooKeeper ensemble=10.1.64.69:2181,10.1.64.70:2181,10.1.64.68:2181
+2015-01-07 11:12:04 [main-SendThread():3147] - [ INFO] Opening socket connection to server /10.1.64.69:2181
+2015-01-07 11:12:04 [main-SendThread(bd-09:2181):3152] - [ INFO] Socket connection established to bd-09/10.1.64.69:2181, initiating session
+2015-01-07 11:12:04 [main-SendThread(bd-09:2181):3156] - [ INFO] Session establishment complete on server bd-09/10.1.64.69:2181, sessionid = 0x24abe2c4ae60010, negotiated timeout = 30000
+2015-01-07 11:12:04 [main:3173] - [ INFO] Session: 0x24abe2c4ae60010 closed
+2015-01-07 11:12:04 [main-EventThread:3173] - [ INFO] EventThread shut down
+2015-01-07 11:12:04 [main:3175] - [ INFO] Disabled medicine
+2015-01-07 11:12:04 [main:3501] - [ INFO] Deleted medicine
+2015-01-07 11:12:09 [main:0] - [ WARN] Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2015-01-07 11:12:09 [main:92] - [ERROR] Failed to locate the winutils binary in the hadoop binary path
+java.io.IOException: Could not locate executable null\bin\winutils.exe in the Hadoop binaries.
+	at org.apache.hadoop.util.Shell.getQualifiedBinPath(Shell.java:278)
+	at org.apache.hadoop.util.Shell.getWinUtilsPath(Shell.java:300)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:293)
+	at org.apache.hadoop.util.StringUtils.<clinit>(StringUtils.java:76)
+	at org.apache.hadoop.conf.Configuration.getStrings(Configuration.java:1514)
+	at org.apache.hadoop.hbase.zookeeper.ZKConfig.makeZKProps(ZKConfig.java:113)
+	at org.apache.hadoop.hbase.zookeeper.ZKConfig.getZKQuorumServersString(ZKConfig.java:265)
+	at org.apache.hadoop.hbase.zookeeper.ZooKeeperWatcher.<init>(ZooKeeperWatcher.java:159)
+	at org.apache.hadoop.hbase.zookeeper.ZooKeeperWatcher.<init>(ZooKeeperWatcher.java:134)
+	at org.apache.hadoop.hbase.client.ZooKeeperKeepAliveConnection.<init>(ZooKeeperKeepAliveConnection.java:43)
+	at org.apache.hadoop.hbase.client.HConnectionManager$HConnectionImplementation.getKeepAliveZooKeeperWatcher(HConnectionManager.java:1768)
+	at org.apache.hadoop.hbase.client.ZooKeeperRegistry.getClusterId(ZooKeeperRegistry.java:82)
+	at org.apache.hadoop.hbase.client.HConnectionManager$HConnectionImplementation.retrieveClusterId(HConnectionManager.java:857)
+	at org.apache.hadoop.hbase.client.HConnectionManager$HConnectionImplementation.<init>(HConnectionManager.java:662)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.apache.hadoop.hbase.client.HConnectionManager.createConnection(HConnectionManager.java:414)
+	at org.apache.hadoop.hbase.client.HConnectionManager.createConnection(HConnectionManager.java:393)
+	at org.apache.hadoop.hbase.client.HConnectionManager.getConnection(HConnectionManager.java:274)
+	at org.apache.hadoop.hbase.client.HBaseAdmin.<init>(HBaseAdmin.java:183)
+	at com.wondersgroup.cloud.medicine.hbase.service.impl.HbaseServiceImpl.createTable(HbaseServiceImpl.java:106)
+	at com.wondersgroup.cloud.HbaseServiceTest.createTableTest(HbaseServiceTest.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at junit.framework.TestCase.runTest(TestCase.java:154)
+	at junit.framework.TestCase.runBare(TestCase.java:127)
+	at junit.framework.TestResult$1.protect(TestResult.java:106)
+	at junit.framework.TestResult.runProtected(TestResult.java:124)
+	at junit.framework.TestResult.run(TestResult.java:109)
+	at junit.framework.TestCase.run(TestCase.java:118)
+	at org.eclipse.jdt.internal.junit.runner.junit3.JUnit3TestReference.run(JUnit3TestReference.java:130)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197)
+2015-01-07 11:12:09 [main:109] - [ INFO] Client environment:zookeeper.version=3.3.3-1073969, built on 02/23/2011 22:27 GMT
+2015-01-07 11:12:09 [main:109] - [ INFO] Client environment:host.name=BING-PC
+2015-01-07 11:12:09 [main:109] - [ INFO] Client environment:java.version=1.6.0_10
+2015-01-07 11:12:09 [main:110] - [ INFO] Client environment:java.vendor=Sun Microsystems Inc.
+2015-01-07 11:12:09 [main:110] - [ INFO] Client environment:java.home=D:\Program Files\Java\jre6
+2015-01-07 11:12:09 [main:110] - [ INFO] Client environment:java.class.path=D:\workspace\medicine-cloud\medicine-worker\target\test-classes;D:\workspace\medicine-cloud\medicine-worker\target\classes;D:\maven\repository\javax\activation\activation\1.1\activation-1.1.jar;D:\maven\repository\com\typesafe\akka\akka-actor_2.10\2.3.1\akka-actor_2.10-2.3.1.jar;D:\maven\repository\com\typesafe\akka\akka-cluster_2.10\2.3.1\akka-cluster_2.10-2.3.1.jar;D:\maven\repository\com\typesafe\akka\akka-contrib_2.10\2.3.1\akka-contrib_2.10-2.3.1.jar;D:\maven\repository\com\typesafe\akka\akka-persistence-experimental_2.10\2.3.1\akka-persistence-experimental_2.10-2.3.1.jar;D:\maven\repository\com\typesafe\akka\akka-remote_2.10\2.3.1\akka-remote_2.10-2.3.1.jar;D:\maven\repository\com\typesafe\akka\akka-testkit_2.10\2.3.1\akka-testkit_2.10-2.3.1.jar;D:\maven\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar;D:\maven\repository\asm\asm\3.1\asm-3.1.jar;D:\maven\repository\org\apache\avro\avro\1.7.4\avro-1.7.4.jar;D:\maven\repository\cglib\cglib-nodep\2.2\cglib-nodep-2.2.jar;D:\maven\repository\commons-beanutils\commons-beanutils\1.8.0\commons-beanutils-1.8.0.jar;D:\maven\repository\commons-beanutils\commons-beanutils-core\1.8.0\commons-beanutils-core-1.8.0.jar;D:\maven\repository\commons-cli\commons-cli\1.2\commons-cli-1.2.jar;D:\maven\repository\commons-codec\commons-codec\1.7\commons-codec-1.7.jar;D:\maven\repository\commons-collections\commons-collections\3.2.1\commons-collections-3.2.1.jar;D:\maven\repository\org\apache\commons\commons-compress\1.4.1\commons-compress-1.4.1.jar;D:\maven\repository\commons-configuration\commons-configuration\1.6\commons-configuration-1.6.jar;D:\maven\repository\commons-dbcp\commons-dbcp\1.2.2\commons-dbcp-1.2.2.jar;D:\maven\repository\commons-digester\commons-digester\1.8\commons-digester-1.8.jar;D:\maven\repository\commons-el\commons-el\1.0\commons-el-1.0.jar;D:\maven\repository\commons-httpclient\commons-httpclient\3.1\commons-httpclient-3.1.jar;D:\maven\repository\commons-io\commons-io\2.1\commons-io-2.1.jar;D:\maven\repository\commons-lang\commons-lang\2.4\commons-lang-2.4.jar;D:\maven\repository\commons-logging\commons-logging\1.1.1\commons-logging-1.1.1.jar;D:\maven\repository\org\apache\commons\commons-math\2.1\commons-math-2.1.jar;D:\maven\repository\commons-net\commons-net\3.1\commons-net-3.1.jar;D:\maven\repository\commons-pool\commons-pool\1.6\commons-pool-1.6.jar;D:\maven\repository\com\typesafe\config\1.2.0\config-1.2.0.jar;D:\maven\repository\com\netflix\curator\curator-client\1.0.1\curator-client-1.0.1.jar;D:\maven\repository\com\netflix\curator\curator-framework\1.0.1\curator-framework-1.0.1.jar;D:\maven\repository\org\easymock\easymock\3.0\easymock-3.0.jar;D:\maven\repository\org\easymock\easymockclassextension\3.0\easymockclassextension-3.0.jar;D:\maven\repository\net\sf\ezmorph\ezmorph\1.0.6\ezmorph-1.0.6.jar;D:\maven\repository\com\github\stephenc\findbugs\findbugs-annotations\1.3.9-1\findbugs-annotations-1.3.9-1.jar;D:\maven\repository\com\google\guava\guava\10.0.1\guava-10.0.1.jar;D:\maven\repository\com\google\inject\guice\3.0\guice-3.0.jar;D:\maven\repository\com\google\inject\extensions\guice-servlet\3.0\guice-servlet-3.0.jar;D:\maven\repository\org\apache\hadoop\hadoop-annotations\2.2.0\hadoop-annotations-2.2.0.jar;D:\maven\repository\org\apache\hadoop\hadoop-auth\2.2.0\hadoop-auth-2.2.0.jar;D:\maven\repository\org\apache\hadoop\hadoop-common\2.2.0\hadoop-common-2.2.0.jar;D:\maven\repository\org\apache\hadoop\hadoop-mapreduce-client-core\2.2.0\hadoop-mapreduce-client-core-2.2.0.jar;D:\maven\repository\org\apache\hadoop\hadoop-yarn-api\2.2.0\hadoop-yarn-api-2.2.0.jar;D:\maven\repository\org\apache\hadoop\hadoop-yarn-common\2.2.0\hadoop-yarn-common-2.2.0.jar;D:\maven\repository\org\fusesource\hawtjni\hawtjni-runtime\1.8\hawtjni-runtime-1.8.jar;D:\maven\repository\org\apache\hbase\hbase-client\0.98.0-hadoop2\hbase-client-0.98.0-hadoop2.jar;D:\maven\repository\org\apache\hbase\hbase-common\0.98.0-hadoop2\hbase-common-0.98.0-hadoop2.jar;D:\maven\repository\org\apache\hbase\hbase-protocol\0.98.0-hadoop2\hbase-protocol-0.98.0-hadoop2.jar;D:\maven\repository\org\cloudera\htrace\htrace-core\2.04\htrace-core-2.04.jar;D:\maven\repository\org\codehaus\jackson\jackson-core-asl\1.8.8\jackson-core-asl-1.8.8.jar;D:\maven\repository\org\codehaus\jackson\jackson-jaxrs\1.8.3\jackson-jaxrs-1.8.3.jar;D:\maven\repository\org\codehaus\jackson\jackson-mapper-asl\1.8.8\jackson-mapper-asl-1.8.8.jar;D:\maven\repository\org\codehaus\jackson\jackson-xc\1.8.3\jackson-xc-1.8.3.jar;D:\maven\repository\javax\inject\javax.inject\1\javax.inject-1.jar;D:\maven\repository\javax\xml\bind\jaxb-api\2.2.2\jaxb-api-2.2.2.jar;D:\maven\repository\com\sun\xml\bind\jaxb-impl\2.2.3-1\jaxb-impl-2.2.3-1.jar;D:\Program Files\Java\jdk1.6.0_10\lib\tools.jar;D:\maven\repository\com\sun\jersey\jersey-core\1.9\jersey-core-1.9.jar;D:\maven\repository\com\sun\jersey\contribs\jersey-guice\1.9\jersey-guice-1.9.jar;D:\maven\repository\com\sun\jersey\jersey-json\1.9\jersey-json-1.9.jar;D:\maven\repository\com\sun\jersey\jersey-server\1.9\jersey-server-1.9.jar;D:\maven\repository\net\java\dev\jets3t\jets3t\0.6.1\jets3t-0.6.1.jar;D:\maven\repository\org\codehaus\jettison\jettison\1.1\jettison-1.1.jar;D:\maven\repository\org\mortbay\jetty\jetty\6.1.26\jetty-6.1.26.jar;D:\maven\repository\org\mortbay\jetty\jetty-util\6.1.26\jetty-util-6.1.26.jar;D:\maven\repository\jline\jline\0.9.94\jline-0.9.94.jar;D:\maven\repository\com\googlecode\jmockit\jmockit\0.999.8\jmockit-0.999.8.jar;D:\maven\repository\com\jcraft\jsch\0.1.42\jsch-0.1.42.jar;D:\maven\repository\org\json\json\20090211\json-20090211.jar;D:\maven\repository\net\sf\json-lib\json-lib\2.3\json-lib-2.3-jdk15.jar;D:\maven\repository\com\google\code\findbugs\jsr305\1.3.9\jsr305-1.3.9.jar;D:\maven\repository\junit\junit\3.8.1\junit-3.8.1.jar;D:\maven\repository\org\iq80\leveldb\leveldb\0.5\leveldb-0.5.jar;D:\maven\repository\org\iq80\leveldb\leveldb-api\0.5\leveldb-api-0.5.jar;D:\maven\repository\org\fusesource\leveldbjni\leveldbjni\1.7\leveldbjni-1.7.jar;D:\maven\repository\org\fusesource\leveldbjni\leveldbjni-all\1.7\leveldbjni-all-1.7.jar;D:\maven\repository\org\fusesource\leveldbjni\leveldbjni-linux32\1.5\leveldbjni-linux32-1.5.jar;D:\maven\repository\org\fusesource\leveldbjni\leveldbjni-linux64\1.5\leveldbjni-linux64-1.5.jar;D:\maven\repository\org\fusesource\leveldbjni\leveldbjni-osx\1.5\leveldbjni-osx-1.5.jar;D:\maven\repository\org\fusesource\leveldbjni\leveldbjni-win32\1.5\leveldbjni-win32-1.5.jar;D:\maven\repository\org\fusesource\leveldbjni\leveldbjni-win64\1.5\leveldbjni-win64-1.5.jar;D:\maven\repository\log4j\log4j\1.2.14\log4j-1.2.14.jar;D:\workspace\medicine-cloud\medicine-module\target\classes;D:\maven\repository\org\objenesis\objenesis\1.2\objenesis-1.2.jar;D:\maven\repository\mysql\mysql-connector-java\5.1.10\mysql-connector-java-5.1.10.jar;D:\maven\repository\io\netty\netty\3.8.0.Final\netty-3.8.0.Final.jar;D:\maven\repository\com\thoughtworks\paranamer\paranamer\2.3\paranamer-2.3.jar;D:\maven\repository\com\google\protobuf\protobuf-java\2.5.0\protobuf-java-2.5.0.jar;D:\maven\repository\org\scala-lang\scala-library\2.10.3\scala-library-2.10.3.jar;D:\maven\repository\org\slf4j\slf4j-api\1.6.3\slf4j-api-1.6.3.jar;D:\maven\repository\org\slf4j\slf4j-log4j12\1.7.5\slf4j-log4j12-1.7.5.jar;D:\maven\repository\org\xerial\snappy\snappy-java\1.0.4.1\snappy-java-1.0.4.1.jar;D:\maven\repository\stax\stax-api\1.0.1\stax-api-1.0.1.jar;D:\maven\repository\org\uncommons\maths\uncommons-maths\1.2.2a\uncommons-maths-1.2.2a.jar;D:\maven\repository\xmlenc\xmlenc\0.52\xmlenc-0.52.jar;D:\maven\repository\org\tukaani\xz\1.0\xz-1.0.jar;D:\maven\repository\org\apache\zookeeper\zookeeper\3.3.3\zookeeper-3.3.3.jar;/D:/eclipse-jee-indigo-win32/configuration/org.eclipse.osgi/bundles/322/1/.cp/;/D:/eclipse-jee-indigo-win32/configuration/org.eclipse.osgi/bundles/323/1/.cp/
+2015-01-07 11:12:09 [main:111] - [ INFO] Client environment:java.library.path=D:\Program Files\Java\jre6\bin;.;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:/Program Files/Java/jre7/bin/client;D:/Program Files/Java/jre7/bin;D:/Program Files/Java/jre7/lib/i386;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;D:\Program Files\Java\jdk1.6.0_10\bin;D:\apache-maven-3.2.3\bin;;.;;D:\eclipse-jee-indigo-win32;;.;
+2015-01-07 11:12:09 [main:111] - [ INFO] Client environment:java.io.tmpdir=C:\Users\BING\AppData\Local\Temp\
+2015-01-07 11:12:09 [main:112] - [ INFO] Client environment:java.compiler=<NA>
+2015-01-07 11:12:09 [main:113] - [ INFO] Client environment:os.name=Windows Vista
+2015-01-07 11:12:09 [main:113] - [ INFO] Client environment:os.arch=x86
+2015-01-07 11:12:09 [main:113] - [ INFO] Client environment:os.version=6.1
+2015-01-07 11:12:09 [main:114] - [ INFO] Client environment:user.name=BING
+2015-01-07 11:12:09 [main:114] - [ INFO] Client environment:user.home=C:\Users\BING
+2015-01-07 11:12:09 [main:114] - [ INFO] Client environment:user.dir=D:\workspace\medicine-cloud\medicine-worker
+2015-01-07 11:12:09 [main:115] - [ INFO] Initiating client connection, connectString=10.1.64.69:2181,10.1.64.70:2181,10.1.64.68:2181 sessionTimeout=30000 watcher=hconnection-0x104faf8, quorum=10.1.64.69:2181,10.1.64.70:2181,10.1.64.68:2181, baseZNode=/hbase-unsecure
+2015-01-07 11:12:09 [main-SendThread():140] - [ INFO] Opening socket connection to server /10.1.64.68:2181
+2015-01-07 11:12:09 [main:142] - [ INFO] Process identifier=hconnection-0x104faf8 connecting to ZooKeeper ensemble=10.1.64.69:2181,10.1.64.70:2181,10.1.64.68:2181
+2015-01-07 11:12:09 [main-SendThread(bd-08:2181):144] - [ INFO] Socket connection established to bd-08/10.1.64.68:2181, initiating session
+2015-01-07 11:12:09 [main-SendThread(bd-08:2181):151] - [ INFO] Session establishment complete on server bd-08/10.1.64.68:2181, sessionid = 0x14a9a16416f0072, negotiated timeout = 30000
+2015-01-07 11:12:09 [main:227] - [ WARN] Failed to identify the fs of dir hdfs://bd-06:8020/apps/hbase/data/lib, ignored
+java.io.IOException: No FileSystem for scheme: hdfs
+	at org.apache.hadoop.fs.FileSystem.getFileSystemClass(FileSystem.java:2421)
+	at org.apache.hadoop.fs.FileSystem.createFileSystem(FileSystem.java:2428)
+	at org.apache.hadoop.fs.FileSystem.access$200(FileSystem.java:88)
+	at org.apache.hadoop.fs.FileSystem$Cache.getInternal(FileSystem.java:2467)
+	at org.apache.hadoop.fs.FileSystem$Cache.get(FileSystem.java:2449)
+	at org.apache.hadoop.fs.FileSystem.get(FileSystem.java:367)
+	at org.apache.hadoop.fs.Path.getFileSystem(Path.java:287)
+	at org.apache.hadoop.hbase.util.DynamicClassLoader.<init>(DynamicClassLoader.java:104)
+	at org.apache.hadoop.hbase.protobuf.ProtobufUtil.<clinit>(ProtobufUtil.java:201)
+	at org.apache.hadoop.hbase.ClusterId.parseFrom(ClusterId.java:64)
+	at org.apache.hadoop.hbase.zookeeper.ZKClusterId.readClusterIdZNode(ZKClusterId.java:69)
+	at org.apache.hadoop.hbase.client.ZooKeeperRegistry.getClusterId(ZooKeeperRegistry.java:83)
+	at org.apache.hadoop.hbase.client.HConnectionManager$HConnectionImplementation.retrieveClusterId(HConnectionManager.java:857)
+	at org.apache.hadoop.hbase.client.HConnectionManager$HConnectionImplementation.<init>(HConnectionManager.java:662)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.apache.hadoop.hbase.client.HConnectionManager.createConnection(HConnectionManager.java:414)
+	at org.apache.hadoop.hbase.client.HConnectionManager.createConnection(HConnectionManager.java:393)
+	at org.apache.hadoop.hbase.client.HConnectionManager.getConnection(HConnectionManager.java:274)
+	at org.apache.hadoop.hbase.client.HBaseAdmin.<init>(HBaseAdmin.java:183)
+	at com.wondersgroup.cloud.medicine.hbase.service.impl.HbaseServiceImpl.createTable(HbaseServiceImpl.java:106)
+	at com.wondersgroup.cloud.HbaseServiceTest.createTableTest(HbaseServiceTest.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at junit.framework.TestCase.runTest(TestCase.java:154)
+	at junit.framework.TestCase.runBare(TestCase.java:127)
+	at junit.framework.TestResult$1.protect(TestResult.java:106)
+	at junit.framework.TestResult.runProtected(TestResult.java:124)
+	at junit.framework.TestResult.run(TestResult.java:109)
+	at junit.framework.TestCase.run(TestCase.java:118)
+	at org.eclipse.jdt.internal.junit.runner.junit3.JUnit3TestReference.run(JUnit3TestReference.java:130)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197)
+2015-01-07 11:12:09 [main:260] - [ INFO] Initiating client connection, connectString=10.1.64.69:2181,10.1.64.70:2181,10.1.64.68:2181 sessionTimeout=30000 watcher=catalogtracker-on-hconnection-0x104faf8, quorum=10.1.64.69:2181,10.1.64.70:2181,10.1.64.68:2181, baseZNode=/hbase-unsecure
+2015-01-07 11:12:09 [main:263] - [ INFO] Process identifier=catalogtracker-on-hconnection-0x104faf8 connecting to ZooKeeper ensemble=10.1.64.69:2181,10.1.64.70:2181,10.1.64.68:2181
+2015-01-07 11:12:09 [main-SendThread():263] - [ INFO] Opening socket connection to server /10.1.64.70:2181
+2015-01-07 11:12:09 [main-SendThread(bd-10:2181):266] - [ INFO] Socket connection established to bd-10/10.1.64.70:2181, initiating session
+2015-01-07 11:12:09 [main-SendThread(bd-10:2181):270] - [ INFO] Session establishment complete on server bd-10/10.1.64.70:2181, sessionid = 0x34a9a1656710074, negotiated timeout = 30000
+2015-01-07 11:12:09 [main:315] - [ INFO] hadoop.native.lib is deprecated. Instead, use io.native.lib.available
+2015-01-07 11:12:09 [main:692] - [ INFO] Session: 0x34a9a1656710074 closed
+2015-01-07 11:12:09 [main-EventThread:692] - [ INFO] EventThread shut down
+2015-01-07 11:12:10 [main:1200] - [ INFO] Initiating client connection, connectString=10.1.64.69:2181,10.1.64.70:2181,10.1.64.68:2181 sessionTimeout=30000 watcher=catalogtracker-on-hconnection-0x104faf8, quorum=10.1.64.69:2181,10.1.64.70:2181,10.1.64.68:2181, baseZNode=/hbase-unsecure
+2015-01-07 11:12:10 [main:1248] - [ INFO] Process identifier=catalogtracker-on-hconnection-0x104faf8 connecting to ZooKeeper ensemble=10.1.64.69:2181,10.1.64.70:2181,10.1.64.68:2181
+2015-01-07 11:12:10 [main-SendThread():1248] - [ INFO] Opening socket connection to server /10.1.64.69:2181
+2015-01-07 11:12:10 [main-SendThread(bd-09:2181):1249] - [ INFO] Socket connection established to bd-09/10.1.64.69:2181, initiating session
+2015-01-07 11:12:10 [main-SendThread(bd-09:2181):1253] - [ INFO] Session establishment complete on server bd-09/10.1.64.69:2181, sessionid = 0x24abe2c4ae60011, negotiated timeout = 30000
+2015-01-07 11:12:10 [main:1267] - [ INFO] Session: 0x24abe2c4ae60011 closed
+2015-01-07 11:12:10 [main-EventThread:1268] - [ INFO] EventThread shut down
