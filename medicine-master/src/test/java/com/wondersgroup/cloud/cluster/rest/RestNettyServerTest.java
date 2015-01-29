@@ -70,18 +70,22 @@ public class RestNettyServerTest extends TestCase {
 
 		for (int k = 0; k < 400; k++) {
 			RootData[] datas = prepareData(k);
-			params.clear();
-			params.add(new BasicNameValuePair("size", String.valueOf(datas.length)));
-			params.add(new BasicNameValuePair("content", JSONArray.fromObject(datas).toString()));
+//			long endTime = System.currentTimeMillis();
+//			logger.info("total time1:" + (endTime - startTime) + " ms");
+			
+//			params.clear();
+//			params.add(new BasicNameValuePair("size", String.valueOf(datas.length)));
+//			params.add(new BasicNameValuePair("content", JSONArray.fromObject(datas).toString()));
 			// 添加参数
-			httppost = new HttpPost(url);
-			httppost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-			// 设置编码
-			HttpResponse response = new DefaultHttpClient().execute(httppost);
+			
+//			httppost = new HttpPost(url);
+//			httppost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+//			// 设置编码
+//			HttpResponse response = new DefaultHttpClient().execute(httppost);
 		}
 
 		long endTime = System.currentTimeMillis();
-		logger.info("total time:" + (endTime - startTime) + " ms");
+		logger.info("total time2:" + (endTime - startTime) + " ms");
 		// assertTrue(response.getStatusLine().getStatusCode() == 204);
 	}
 
@@ -95,7 +99,7 @@ public class RestNettyServerTest extends TestCase {
 					.initOrgan("sh/xinhua/waike/nima1")
 					.initTime(String.valueOf(version))
 					.initQueue(
-							"catA,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratBcatA,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratBcatA,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB");
+							"catA,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratB,ratA,ratBcatA");
 			// JSONObject encode = JSONObject.fromObject(line1);
 			// System.out.println(encode.toString());
 			result.add(line1);
